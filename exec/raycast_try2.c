@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:38:22 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/08 01:11:41 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/08 02:23:36 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,27 @@ void	draw_ray2(t_data *data, double ray_x, double ray_y, double dir_x,
 	}
 }
 
+void	draw_ceiling_and_floor(t_data *data, int color_ceiling, int color_floor)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			if (y < HEIGHT / 2)
+				mlx_pixel_put(data->mlx->mlx, data->mlx->win, x, y, color_ceiling); // Plafond
+			else
+				mlx_pixel_put(data->mlx->mlx, data->mlx->win, x, y, color_floor); // Sol
+			x++;
+		}
+		y++;
+	}
+}
+
 void	draw_ray(t_data *data)
 {
 	int	i;
@@ -190,6 +211,7 @@ void	draw_ray(t_data *data)
 	int	color;
 
 	i = 0;
+	draw_ceiling_and_floor(data, 0x85c1e9, 0x22455d);
 	while (i < WIDTH)
 	{
 		// 1. Calcul de la direction du rayon dans l'espace caméra
@@ -249,7 +271,7 @@ void	draw_ray(t_data *data)
 		draw_end = line_height / 2 + HEIGHT / 2;
 		if (draw_end >= HEIGHT)
 			draw_end = HEIGHT - 1;
-		color = (data->raycast->side_x < data->raycast->side_y) ? 0xAAAAAA : 0x777777;
+		color = (data->raycast->side_x < data->raycast->side_y) ? 0xaf70d1 : 0x48225d;
 		draw_wall(data, i, draw_start, draw_end, color);
 		i++;
 	}
