@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:38:22 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/08 02:23:36 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/08 02:32:21 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,14 +297,14 @@ int	direction_key(unsigned int keycode, t_data *data)
 	double	old_dir_x;
 	double	old_plane_x;
 
-	if (keycode == DOWN)
-	{
-		printf("DOWN (Rotate 180°)\n");
-		data->raycast->dir_x = -data->raycast->dir_x;
-		data->raycast->dir_y = -data->raycast->dir_y;
-		data->raycast->plane_x = -data->raycast->plane_x;
-		data->raycast->plane_y = -data->raycast->plane_y;
-	}
+	// if (keycode == DOWN)
+	// {
+	// 	printf("DOWN (Rotate 180°)\n");
+	// 	data->raycast->dir_x = -data->raycast->dir_x;
+	// 	data->raycast->dir_y = -data->raycast->dir_y;
+	// 	data->raycast->plane_x = -data->raycast->plane_x;
+	// 	data->raycast->plane_y = -data->raycast->plane_y;
+	// }
 	if (keycode == LEFT)
 	{
 		printf("LEFT\n");
@@ -348,22 +348,22 @@ int	press_key(unsigned int keycode, t_data *data)
 		ft_free_data(data);
 		exit(0);
 	}
-	if (keycode == KEY_W || keycode == KEY_Z) // Avancer
+	if (keycode == KEY_W || keycode == KEY_Z)
 	{
 		new_x += data->raycast->dir_x * MOVE_SPEED;
 		new_y += data->raycast->dir_y * MOVE_SPEED;
 	}
-	if (keycode == KEY_S) // Reculer
+	if (keycode == KEY_S)
 	{
 		new_x -= data->raycast->dir_x * MOVE_SPEED;
 		new_y -= data->raycast->dir_y * MOVE_SPEED;
 	}
-	if (keycode == KEY_A || keycode == KEY_Q) // Strafe gauche
+	if (keycode == KEY_A || keycode == KEY_Q)
 	{
 		new_x -= data->raycast->plane_x * MOVE_SPEED;
 		new_y -= data->raycast->plane_y * MOVE_SPEED;
 	}
-	if (keycode == KEY_D) // Strafe droite
+	if (keycode == KEY_D)
 	{
 		new_x += data->raycast->plane_x * MOVE_SPEED;
 		new_y += data->raycast->plane_y * MOVE_SPEED;
@@ -381,17 +381,6 @@ int	press_key(unsigned int keycode, t_data *data)
 	else
 		printf("Mouvement bloqué !\n");
 	mlx_clear_window(data->mlx->mlx, data->mlx->win);
-	// if (keycode == KEY_A || keycode == KEY_Q)
-	// 	new_x -= MOVE_SPEED;
-	// if (keycode == KEY_D)
-	// 	new_x += MOVE_SPEED;
-	// if (keycode == KEY_W || keycode == KEY_Z)
-	// 	new_y -= MOVE_SPEED;
-	// if (keycode == KEY_S)
-	// 	new_y += MOVE_SPEED;
-	// draw_floor(data);
-	// draw_wall(data);
-	// draw_player(data);
 	draw_ray(data);
 	return (0);
 }
