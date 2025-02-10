@@ -12,8 +12,7 @@ SRC = main.c \
 	utils.c \
 	parse/check_textures.c \
 	exec/convert_map.c \
-	exec/raycast_try2.c \
-	# exec/raycast_test.c \
+	exec/raycast.c \
 
 HEADER = cub.h
 

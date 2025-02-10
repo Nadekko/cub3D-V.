@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast_try2.c                                     :+:      :+:    :+:   */
+/*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/05 16:38:22 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/08 02:32:21 by andjenna         ###   ########.fr       */
+/*   Created: 2025/02/10 20:49:28 by andjenna          #+#    #+#             */
+/*   Updated: 2025/02/10 20:49:30 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,67 +74,44 @@ int	ft_get_player_pos(t_data *data)
 	return (1);
 }
 
-void	draw_floor(t_data *data)
+unsigned int	get_pixel(t_img *img, int x, int y)
 {
-	int	x;
-	int	y;
+	return (*(unsigned int *)((img->addr + (y * img->line_len)
+			+ (x * img->bpp / 8))));
+}
 
-	x = 0;
-	y = 0;
-	while (data->map->map_tab[y] && y < data->map->height)
+//copy the pixel on an img, ignore transparency
+void	put_pixel(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	if (color == (int)0xFF000000)
+		return ;
+	if (x >= 0 && y >= 0 && x < img->width && y < img->height)
 	{
-		while (data->map->map_tab[y][x] && x < data->map->width)
-		{
-			if ((data->map->map_int[y][x] == 0 || data->map->map_int[y][x] == 3)
-				&& data->map->map_int[y][x] != 1
-				&& data->map->map_int[y][x] != 2)
-				mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
-					data->mlx->img[0]->img, x * (PIXEL), y * (PIXEL));
-			x++;
-		}
-		x = 0;
-		y++;
+		dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
+		*(unsigned int *) dst = color;
 	}
 }
 
-// void	draw_wall(t_data *data)
-// {
-// 	int	x;
-// 	int	y;
+//copy an img on another
+void	put_img_to_img(t_img *dst, t_img *src, int x, int y)
+{
+	int	j;
+	int	i;
 
-// 	x = 0;
-// 	y = 0;
-// 	while (data->map->map_tab[y] && y < data->map->height)
-// 	{
-// 		while (data->map->map_tab[y][x] && x < data->map->width)
-// 		{
-// 			if (data->map->map_int[y][x] == 1)
-// 				mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
-// 					data->mlx->img[1]->img, x * (PIXEL), y * (PIXEL));
-// 			x++;
-// 		}
-// 		x = 0;
-// 		y++;
-// 	}
-// }
-
-// void	draw_wall(t_data *data, int x, int draw_start, int draw_end, int color)
-// {
-// 	int	y;
-
-// 	y = draw_start;
-// 	(void)color;
-// 	while (y < draw_end)
-// 	{
-// 		mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
-// 			data->mlx->img[1]->img, x, y);
-// 			mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
-// 				data->mlx->img[1]->img, x, draw_start);
-
-// 		y++;
-// 	}
-// 	// mlx_pixel_put(data->mlx->mlx, data->mlx->win, x, y, color);
-// }
+	i = 0;
+	while (i < src->width)
+	{
+		j = 0;
+		while (j < src->height)
+		{
+			put_pixel(dst, x + i, y + j, get_pixel(src, i, j));
+			j++;
+		}
+		i++;
+	}
+}
 
 void	draw_wall(t_data *data, int x, int draw_start, int draw_end, int color)
 {
@@ -146,13 +123,6 @@ void	draw_wall(t_data *data, int x, int draw_start, int draw_end, int color)
 		mlx_pixel_put(data->mlx->mlx, data->mlx->win, x, y, color);
 		y++;
 	}
-}
-
-void	draw_player(t_data *data)
-{
-	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
-		data->mlx->img[2]->img, data->player->pos_x * (PIXEL),
-		data->player->pos_y * (PIXEL));
 }
 
 void	draw_ray2(t_data *data, double ray_x, double ray_y, double dir_x,
@@ -297,14 +267,6 @@ int	direction_key(unsigned int keycode, t_data *data)
 	double	old_dir_x;
 	double	old_plane_x;
 
-	// if (keycode == DOWN)
-	// {
-	// 	printf("DOWN (Rotate 180°)\n");
-	// 	data->raycast->dir_x = -data->raycast->dir_x;
-	// 	data->raycast->dir_y = -data->raycast->dir_y;
-	// 	data->raycast->plane_x = -data->raycast->plane_x;
-	// 	data->raycast->plane_y = -data->raycast->plane_y;
-	// }
 	if (keycode == LEFT)
 	{
 		printf("LEFT\n");
