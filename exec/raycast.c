@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 20:49:28 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/11 17:05:29 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:37:55 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ void	draw_ceiling_and_floor(t_data *data, int color_ceiling, int color_floor)
 	}
 }
 
-void	draw_ray(t_data *data)
+void	ft_raycasting(t_data *data)
 {
 	int	i;
 	int	step_x;
@@ -268,90 +268,4 @@ int	is_valid_move(double new_x, double new_y, t_data *data)
 	if (data->map->map_int[map_y][map_x] == 1)
 		return (0);
 	return (1);
-}
-
-int	direction_key(unsigned int keycode, t_data *data)
-{
-	double	old_dir_x;
-	double	old_plane_x;
-
-	if (keycode == LEFT)
-	{
-		printf("LEFT\n");
-		old_dir_x = data->raycast->dir_x;
-		data->raycast->dir_x = data->raycast->dir_x * cos(-ROT_SPEED)
-			- data->raycast->dir_y * sin(-ROT_SPEED);
-		data->raycast->dir_y = old_dir_x * sin(-ROT_SPEED)
-			+ data->raycast->dir_y * cos(-ROT_SPEED);
-		old_plane_x = data->raycast->plane_x;
-		data->raycast->plane_x = data->raycast->plane_x * cos(-ROT_SPEED)
-			- data->raycast->plane_y * sin(-ROT_SPEED);
-		data->raycast->plane_y = old_plane_x * sin(-ROT_SPEED)
-			+ data->raycast->plane_y * cos(-ROT_SPEED);
-	}
-	if (keycode == RIGHT)
-	{
-		printf("RIGHT\n");
-		old_dir_x = data->raycast->dir_x;
-		data->raycast->dir_x = data->raycast->dir_x * cos(ROT_SPEED)
-			- data->raycast->dir_y * sin(ROT_SPEED);
-		data->raycast->dir_y = old_dir_x * sin(ROT_SPEED) + data->raycast->dir_y
-			* cos(ROT_SPEED);
-		old_plane_x = data->raycast->plane_x;
-		data->raycast->plane_x = data->raycast->plane_x * cos(ROT_SPEED)
-			- data->raycast->plane_y * sin(ROT_SPEED);
-		data->raycast->plane_y = old_plane_x * sin(ROT_SPEED)
-			+ data->raycast->plane_y * cos(ROT_SPEED);
-	}
-	return (0);
-}
-int	press_key(unsigned int keycode, t_data *data)
-{
-	double	new_x;
-	double	new_y;
-
-	new_x = data->player->pos_x;
-	new_y = data->player->pos_y;
-	direction_key(keycode, data);
-	if (keycode == KEY_ESC)
-	{
-		ft_free_data(data);
-		exit(0);
-	}
-	if (keycode == KEY_W || keycode == KEY_Z)
-	{
-		new_x += data->raycast->dir_x * MOVE_SPEED;
-		new_y += data->raycast->dir_y * MOVE_SPEED;
-	}
-	if (keycode == KEY_S)
-	{
-		new_x -= data->raycast->dir_x * MOVE_SPEED;
-		new_y -= data->raycast->dir_y * MOVE_SPEED;
-	}
-	if (keycode == KEY_A || keycode == KEY_Q)
-	{
-		new_x -= data->raycast->plane_x * MOVE_SPEED;
-		new_y -= data->raycast->plane_y * MOVE_SPEED;
-	}
-	if (keycode == KEY_D)
-	{
-		new_x += data->raycast->plane_x * MOVE_SPEED;
-		new_y += data->raycast->plane_y * MOVE_SPEED;
-	}
-	printf("Dir: (%f, %f)\n", data->raycast->dir_x, data->raycast->dir_y);
-	printf("Plane: (%f, %f)\n", data->raycast->plane_x, data->raycast->plane_y);
-	printf("New pos: (%f, %f)\n", new_x, new_y);
-	if (is_valid_move(new_x, new_y, data))
-	{
-		printf("new_x = %f\n", new_x);
-		printf("new_y = %f\n", new_y);
-		data->player->pos_x = new_x;
-		data->player->pos_y = new_y;
-	}
-	else
-		printf("Mouvement bloqué !\n");
-	// mlx_clear_window(data->mlx->mlx, data->mlx->win);
-	draw_ray(data);
-	draw_player(data);
-	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/11 16:57:42 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:31:26 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,23 @@ typedef struct s_raycast
 
 }				t_raycast;
 
+typedef struct s_move
+{
+	int			z;
+	int			s;
+	int			q;
+	int			d;
+	int			l;
+	int			r;
+}				t_move;
+
 typedef struct s_data
 {
 	t_map		*map;
 	t_mlx		*mlx;
 	t_player	*player;
 	t_raycast	*raycast;
+	t_move		move;
 	char		*texture_f;
 	char		*texture_c;
 	char		*texture_n;
@@ -159,6 +170,11 @@ void	draw_wall(t_data *data, int x, int draw_start, int draw_end, int color);
 void			draw_floor(t_data *data);
 void			draw_ray(t_data *data);
 void			display_game(t_data *data);
-int				press_key(unsigned int keycode, t_data *data);
-int				direction_key(unsigned int keycode, t_data *data);
+int				key_press(int keycode, t_data *data);
+int				key_release(int keycode, t_data *data);
+int				ft_rotate(t_data *data);
+int				ft_move(t_data *data);
+int				is_valid_move(double new_x, double new_y, t_data *data);
+int				ft_play(t_data *data);
+void				ft_raycasting(t_data *data);
 #endif

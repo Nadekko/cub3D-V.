@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:52:07 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/11 17:02:24 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:05:48 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,6 @@ int	mlx_window_init(t_data *data)
 	t_size	*screen_size;
 
 	screen_size = ft_screen_size(data->mlx->mlx);
-	// if (data->map->width && data->map->height && data->map->width
-	// 	* PIXEL < screen_size->screen_width && data->map->height
-	// 	* PIXEL < screen_size->screen_height)
-	// 	data->mlx->win = mlx_new_window(data->mlx->mlx, data->map->width
-	// 			* PIXEL, data->map->height * PIXEL, "cub3D");
-	// else
 		data->mlx->win = mlx_new_window(data->mlx->mlx, WIDTH, HEIGHT, "cub3D");
 	if (!data->mlx->win)
 		return (free(screen_size), 1);
