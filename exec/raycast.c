@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 20:49:28 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/10 20:49:30 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:05:29 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ int	ft_get_player_pos(t_data *data)
 	return (1);
 }
 
-unsigned int	get_pixel(t_img *img, int x, int y)
+unsigned int	get_pixel(t_img img, int x, int y)
 {
-	return (*(unsigned int *)((img->addr + (y * img->line_len)
-			+ (x * img->bpp / 8))));
+	return (*(unsigned int *)((img.addr + (y * img.line_len)
+			+ (x * img.bpp / 8))));
 }
 
 //copy the pixel on an img, ignore transparency
@@ -95,22 +95,29 @@ void	put_pixel(t_img *img, int x, int y, int color)
 }
 
 //copy an img on another
-void	put_img_to_img(t_img *dst, t_img *src, int x, int y)
+void	put_img_to_img(t_data *data, t_img src, int x, int y)
 {
 	int	j;
 	int	i;
 
 	i = 0;
-	while (i < src->width)
+	(void)y;
+	while (i < src.width)
 	{
 		j = 0;
-		while (j < src->height)
+		while (j < src.height)
 		{
-			put_pixel(dst, x + i, y + j, get_pixel(src, i, j));
+			if (get_pixel(src, i, j) != 0xFF000000)
+				mlx_pixel_put(data->mlx->mlx, data->mlx->win, (x + i), ((HEIGHT / 7) + j), get_pixel(src, i, j));
 			j++;
 		}
 		i++;
 	}
+}
+
+void	draw_player(t_data *data)
+{
+	put_img_to_img(data, *data->mlx->img[4], 0, 0);
 }
 
 void	draw_wall(t_data *data, int x, int draw_start, int draw_end, int color)
@@ -245,6 +252,7 @@ void	draw_ray(t_data *data)
 		draw_wall(data, i, draw_start, draw_end, color);
 		i++;
 	}
+	draw_player(data);
 }
 
 int	is_valid_move(double new_x, double new_y, t_data *data)
@@ -342,7 +350,8 @@ int	press_key(unsigned int keycode, t_data *data)
 	}
 	else
 		printf("Mouvement bloqué !\n");
-	mlx_clear_window(data->mlx->mlx, data->mlx->win);
+	// mlx_clear_window(data->mlx->mlx, data->mlx->win);
 	draw_ray(data);
+	draw_player(data);
 	return (0);
 }

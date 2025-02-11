@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 23:44:57 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/04 17:28:11 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:06:21 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,23 @@ int	ft_free_int_tab(t_data *data)
 
 int	ft_free_data(t_data *data)
 {
-	if (data->map && data->map->map_int)
+	if (data->map)
 	{
-		ft_free_int_tab(data);
+		if (data->map->map_int)
+			ft_free_int_tab(data);
 		ft_free_tab(data->map->map_tab);
 		free(data->map);
 	}
 	if (data->mlx)
 	{
-		ft_free_img(data->mlx, 3);
-		if (data->mlx->win)
-			mlx_destroy_window(data->mlx->mlx, data->mlx->win);
-		mlx_destroy_display(data->mlx->mlx);
-		free(data->mlx->mlx);
+		if (data->mlx->mlx)
+		{
+			ft_free_img(data->mlx, 4);
+			if (data->mlx->win)
+				mlx_destroy_window(data->mlx->mlx, data->mlx->win);
+			mlx_destroy_display(data->mlx->mlx);
+			free(data->mlx->mlx);
+		}
 		free(data->mlx);
 	}
 	if (data->player)

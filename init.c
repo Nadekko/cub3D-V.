@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:52:07 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/08 02:18:32 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:02:24 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_clean_init_data(t_data *data)
 {
 	data->map = NULL;
 	data->mlx = NULL;
+	data->raycast = NULL;
 	data->player = NULL;
 	data->texture_c = NULL;
 	data->texture_f = NULL;
@@ -80,7 +81,7 @@ int	mlx_start(t_data *data)
 		return (1);
 	data->mlx->mlx = mlx_init();
 	if (!data->mlx->mlx)
-		return (free(data->mlx), 1);
+		return (1);
 	data->mlx->win = NULL;
 	return (0);
 }
@@ -98,6 +99,6 @@ int	mlx_window_init(t_data *data)
 	// else
 		data->mlx->win = mlx_new_window(data->mlx->mlx, WIDTH, HEIGHT, "cub3D");
 	if (!data->mlx->win)
-		return (free(data->mlx->mlx), free(data->mlx), free(screen_size), 1);
+		return (free(screen_size), 1);
 	return (free(screen_size), 0);
 }
