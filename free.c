@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 23:44:57 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/11 17:06:21 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:29:56 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_free_data(t_data *data)
 	free(data->texture_s);
 	free(data->texture_e);
 	free(data->texture_w);
-	return (0);
+	exit(0);
 }
 
 int	ft_free_img(t_mlx *mlx, int index)

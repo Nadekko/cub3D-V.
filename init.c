@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:52:07 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/11 19:05:48 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:46:47 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,17 @@ int	ft_clean_init_raycast(t_data *data)
 	data->raycast->map_y = 0;
 	return (0);
 }
+
+void	ft_clean_init_move(t_data *data)
+{
+	data->move.z = 0;
+	data->move.q = 0;
+	data->move.s = 0;
+	data->move.d = 0;
+	data->move.l = 0;
+	data->move.r = 0;
+}
+
 t_size	*ft_screen_size(void *mlx)
 {
 	t_size	*size;

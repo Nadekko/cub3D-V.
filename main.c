@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:20:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/11 19:34:53 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/12 18:30:30 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	main(int ac, char **av, char **env)
 		}
 		ft_clean_init_player(&data);
 		ft_clean_init_raycast(&data);
+		ft_clean_init_move(&data);
 		if (!ft_get_player_pos(&data))
 			printf("player pos x = %f, player pos y = %f\n", data.player->pos_x, data.player->pos_y);
 		display_game(&data);

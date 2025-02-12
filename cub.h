@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/11 19:31:26 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:27:03 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "libft/libft.h"
 # include <math.h>
 
-# define HEIGHT	512
+# define HEIGHT 512
 # define WIDTH 1024
 # define PIXEL 48
 # define FOV 0.66
@@ -30,15 +30,14 @@
 # define KEY_Z 122
 # define KEY_Q 113
 # define KEY_ESC 65307
-# define LEFT	65361
-# define UP	65362
-# define RIGHT	65363
-# define DOWN	65364
+# define LEFT 65361
+# define UP 65362
+# define RIGHT 65363
+# define DOWN 65364
 // # define LEFT	37
 // # define UP	38
 // # define RIGHT	39
 // # define DOWN	40
-
 
 typedef struct s_size
 {
@@ -141,6 +140,8 @@ int				ft_clean_init_player(t_data *data);
 int				ft_clean_init_raycast(t_data *data);
 int				mlx_start(t_data *data);
 int				mlx_window_init(t_data *data);
+void			ft_clean_init_move(t_data *data);
+
 
 /*		UTILS		*/
 size_t			ft_longest_line(char **map);
@@ -166,9 +167,10 @@ int				ft_get_player_dir(t_data *data);
 /*		TEST		*/
 void			draw_player(t_data *data);
 // void			draw_wall(t_data *data);
-void	draw_wall(t_data *data, int x, int draw_start, int draw_end, int color);
-void			draw_floor(t_data *data);
-void			draw_ray(t_data *data);
+void			draw_wall(t_data *data, int x, int draw_start, int draw_end,
+					int color);
+// void			draw_floor(t_data *data);
+// void			draw_ray(t_data *data);
 void			display_game(t_data *data);
 int				key_press(int keycode, t_data *data);
 int				key_release(int keycode, t_data *data);
@@ -176,5 +178,6 @@ int				ft_rotate(t_data *data);
 int				ft_move(t_data *data);
 int				is_valid_move(double new_x, double new_y, t_data *data);
 int				ft_play(t_data *data);
-void				ft_raycasting(t_data *data);
+void			ft_raycasting(t_data *data);
+
 #endif
