@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/13 13:13:57 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:54:55 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,20 +89,25 @@ typedef struct s_mlx
 
 typedef struct s_raycast
 {
+	double		camera_x;
+	double		ray_x;
+	double		ray_y;
 	double		dir_x;
 	double		dir_y;
 	double		delta_x;
 	double		delta_y;
 	double		plane_x;
 	double		plane_y;
-	double		camera_x;
-	double		ray_x;
-	double		ray_y;
 	double		side_x;
 	double		side_y;
+	double		step_x;
+	double		step_y;
+	double		line_height;
 	double		wall_dist;
 	int			map_x;
 	int			map_y;
+	int			draw_start;
+	int			draw_end;
 
 }				t_raycast;
 

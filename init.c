@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:52:07 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/13 02:15:24 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:53:22 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ int	ft_clean_init_raycast(t_data *data)
 	data->raycast->wall_dist = 0;
 	data->raycast->map_x = 0;
 	data->raycast->map_y = 0;
+	data->raycast->draw_start = 0;
+	data->raycast->draw_end = 0;
+	data->raycast->line_height = 0;
+	data->raycast->step_x = 0;
+	data->raycast->step_y = 0;
 	return (0);
 }
 
