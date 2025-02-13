@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:20:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/12 22:05:29 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:26:38 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	display_game(t_data *data)
 {
-	mlx_hook(data->mlx->win, 17, 1L << 17, ft_free_data, data);
+	mlx_hook(data->mlx->win, 17, 1L << 17, ft_free_exit, data);
 	mlx_hook(data->mlx->win, 2, 1L << 0, key_press, data);
 	mlx_loop_hook(data->mlx->mlx, &ft_play, data);
 	mlx_hook(data->mlx->win, 3, 1L << 1, key_release, data);
@@ -47,8 +47,8 @@ int	main(int ac, char **av, char **env)
 			printf("texture S = %s\n", data.texture_s);
 			printf("texture W = %s\n", data.texture_w);
 			printf("texture E = %s\n", data.texture_e);
-			printf("texture F = %s\n", data.texture_f);
-			printf("texture C = %s\n", data.texture_c);
+			printf("texture F = %d, %d, %d\n", data.texture_f->red, data.texture_f->green, data.texture_f->blue);
+			printf("texture C = %d, %d, %d\n", data.texture_c->red, data.texture_c->green, data.texture_c->blue);
 			while (data.map->map_tab[i])
 			{
 				printf("%s", data.map->map_tab[i]);
@@ -60,7 +60,7 @@ int	main(int ac, char **av, char **env)
 					ft_putendl_fd("Error initalizing mlx failed", 2), 1);
 			if(ft_check_textures(&data) || ft_check_rgb(&data))
 				return (ft_free_data(&data), ft_free_tab(test),
-				ft_putendl_fd("Error invalid image files", 2), 1);
+				ft_putendl_fd("Error invalid textures / image files", 2), 1);
 			else if (ft_check_map_closed(data.map->map_tab) || ft_check_player(data.map->map_tab))
 				return (ft_free_data(&data), ft_free_tab(test),
 				ft_putendl_fd("Error invalid map file", 2), 1);

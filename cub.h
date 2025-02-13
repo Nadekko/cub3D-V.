@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/13 03:33:50 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:13:57 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@
 // # define UP	38
 // # define RIGHT	39
 // # define DOWN	40
+
+typedef struct s_color
+{
+	int			red;
+	int			green;
+	int			blue;
+}				t_color;
 
 typedef struct s_size
 {
@@ -116,8 +123,8 @@ typedef struct s_data
 	t_player	*player;
 	t_raycast	*raycast;
 	t_move		move;
-	char		*texture_f;
-	char		*texture_c;
+	t_color		*texture_f;
+	t_color		*texture_c;
 	char		*texture_n;
 	char		*texture_s;
 	char		*texture_e;
@@ -153,6 +160,7 @@ char			*ft_join_to_comb_empty(char *line, size_t longest_line);
 /*		FREE		*/
 int				ft_free_img(t_mlx *mlx, int n);
 int				ft_free_data(t_data *data);
+int				ft_free_exit(t_data *data);
 
 /*		CHECK_TEXTURES		*/
 int				ft_check_textures(t_data *data);

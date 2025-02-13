@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 23:44:57 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/13 02:15:32 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:17:10 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,41 @@ int	ft_free_int_tab(t_data *data)
 }
 
 int	ft_free_data(t_data *data)
+{
+	if (data->map)
+	{
+		if (data->map->map_int)
+			ft_free_int_tab(data);
+		ft_free_tab(data->map->map_tab);
+		free(data->map);
+	}
+	if (data->mlx)
+	{
+		if (data->mlx->mlx)
+		{
+			free(data->mlx->img[5]);
+			ft_free_img(data->mlx, IMG_COUNT - 1);
+			if (data->mlx->win)
+				mlx_destroy_window(data->mlx->mlx, data->mlx->win);
+			mlx_destroy_display(data->mlx->mlx);
+			free(data->mlx->mlx);
+		}
+		free(data->mlx);
+	}
+	if (data->player)
+		free(data->player);
+	if (data->raycast)
+		free(data->raycast);
+	free(data->texture_f);
+	free(data->texture_c);
+	free(data->texture_n);
+	free(data->texture_s);
+	free(data->texture_e);
+	free(data->texture_w);
+		return (0);
+}
+
+int	ft_free_exit(t_data *data)
 {
 	if (data->map)
 	{
@@ -65,8 +100,7 @@ int	ft_free_img(t_mlx *mlx, int index)
 	int	i;
 
 	i = 0;
-	(void)index;
-	while (i < IMG_COUNT)
+	while (i < index)
 	{
 		if (mlx->img[i])
 		{

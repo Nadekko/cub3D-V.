@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:06 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/01/30 13:28:36 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:27:20 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,48 @@ int	ft_check_line(char *str)
 	return (0);
 }
 
+int	ft_get_rgb_values(char zone, char *texture, t_data *data)
+{
+	char	**tab;
+	int		i;
+
+	tab = ft_split(texture, ',');
+	if (ft_tab_len(tab) > 3 || ft_tab_len(tab) < 3)
+		return (ft_free_tab(tab), 1);
+	i = 0;
+	while (tab[i])
+	{
+		if (i == 0)
+		{
+			if (zone == 'F')
+				data->texture_f->red = ft_atoi(tab[i]);
+			else if (zone == 'C')
+				data->texture_c->red = ft_atoi(tab[i]);
+		}
+		else if (i == 1)
+		{
+			if (zone == 'F')
+				data->texture_f->green = ft_atoi(tab[i]);
+			else if (zone == 'C')
+				data->texture_c->green = ft_atoi(tab[i]);
+		}
+		else if (i == 2)
+		{
+			if (zone == 'F')
+				data->texture_f->blue = ft_atoi(tab[i]);
+			else if (zone == 'C')
+				data->texture_c->blue = ft_atoi(tab[i]);
+		}
+		i++;
+	}
+	ft_free_tab(tab);
+	return (0);
+}
+
 int	ft_get_textures(char **file, t_data *data, int i, int j)
 {
+	char	*tmp;
+
 	if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'N')
 		data->texture_n = ft_get_textures_path(file[i], "NO");
 	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'S')
@@ -114,9 +154,23 @@ int	ft_get_textures(char **file, t_data *data, int i, int j)
 	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'E')
 		data->texture_e = ft_get_textures_path(file[i], "EA");
 	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'F')
-		data->texture_f = ft_get_textures_path(file[i], "F");
+	{
+		data->texture_f = ft_calloc(1, sizeof(t_color));
+		if (!data->texture_f)
+			return (1);
+		tmp = ft_get_textures_path(file[i], "F");
+		ft_get_rgb_values('F', tmp, data);
+		free(tmp);
+	}
 	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'C')
-		data->texture_c = ft_get_textures_path(file[i], "C");
+	{
+		data->texture_c = ft_calloc(1, sizeof(t_color));
+		if (!data->texture_c)
+			return (1);
+		tmp = ft_get_textures_path(file[i], "C");
+		ft_get_rgb_values('C', tmp, data);
+		free(tmp);
+	}
 	return (0);
 }
 

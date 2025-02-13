@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:04:59 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/13 03:23:33 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:18:23 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ int     key_release(int keycode, t_data *data)
 int	key_press(int keycode, t_data *data)
 {
 	if (keycode == KEY_ESC)
-	{
-		ft_free_data(data);
-		exit(0);
-	}
+		ft_free_exit(data);
 	if (keycode == KEY_Z || keycode == KEY_W)
 		data->move.z = 1;
 	if (keycode == KEY_Q || keycode == KEY_A)
