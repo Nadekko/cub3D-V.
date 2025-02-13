@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/13 03:24:48 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/13 03:33:50 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,23 +168,18 @@ int				ft_get_player_dir(t_data *data);
 
 /*		TEST		*/
 						/*	DRAW	*/
-void			draw_player(t_data *data);
-// void			draw_wall(t_data *data);
-void			draw_wall(t_data *data, int x, int draw_start, int draw_end,
-					int color);
 void			draw_ceiling_and_floor(t_data *data, int color_ceiling,
 					int color_floor);
-// void			draw_floor(t_data *data);
-// void			draw_ray(t_data *data);
-					/*	DRAW UTILS	*/
-unsigned int	get_pixel(t_img img, int x, int y);
-void			put_pixel(t_img *img, int x, int y, int color);
-void			put_img_to_img(t_data *data, t_img src, int x, int y);
 void			draw_wall_to_image(t_data *data, int x, int draw_start,
 					int draw_end, int color);
 void			draw_player_to_image(t_data *data);
 void			draw_floor(t_data *data);
 void			draw_celing(t_data *data);
+
+					/*	DRAW UTILS	*/
+unsigned int	get_pixel(t_img img, int x, int y);
+void			put_pixel(t_img *img, int x, int y, int color);
+void			put_img_to_img(t_data *data, t_img src, int x, int y);
 
 
 
