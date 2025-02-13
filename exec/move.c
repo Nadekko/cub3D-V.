@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:04:59 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/12 16:36:38 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/13 03:23:33 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	ft_rotate(t_data *data)
 
 	if (data->move.l == 1)
 	{
-		printf("LEFT\n");
 		old_dir_x = data->raycast->dir_x;
 		data->raycast->dir_x = data->raycast->dir_x * cos(-ROT_SPEED)
 			- data->raycast->dir_y * sin(-ROT_SPEED);
@@ -72,7 +71,6 @@ int	ft_rotate(t_data *data)
 	}
 	if (data->move.r == 1)
 	{
-		printf("RIGHT\n");
 		old_dir_x = data->raycast->dir_x;
 		data->raycast->dir_x = data->raycast->dir_x * cos(ROT_SPEED)
 			- data->raycast->dir_y * sin(ROT_SPEED);
@@ -85,6 +83,21 @@ int	ft_rotate(t_data *data)
 			+ data->raycast->plane_y * cos(ROT_SPEED);
 	}
 	return (0);
+}
+
+int	is_valid_move(double new_x, double new_y, t_data *data)
+{
+	int	map_x;
+	int	map_y;
+
+	if (new_x < 0 || new_x >= data->map->width || new_y < 0
+		|| new_y >= data->map->height)
+		return (0);
+	map_x = (int)new_x;
+	map_y = (int)new_y;
+	if (data->map->map_int[map_y][map_x] == 1)
+		return (0);
+	return (1);
 }
 
 int	ft_move(t_data *data)
@@ -119,64 +132,63 @@ int	ft_move(t_data *data)
 		data->player->pos_x = new_x;
 		data->player->pos_y = new_y;
 	}
-	ft_raycasting(data);
+	else
+		printf("COLLISION\n");
+	return (0);
+}
+
+void	fill_background(t_data *data)
+{
+	draw_celing(data);
+	draw_floor(data);
+}
+
+int	laod_background(t_data *data)
+{
+	// Vérifier si l'image existe déjà pour éviter une recréation inutile
+	if (!data->mlx->img[5])
+	{
+		data->mlx->img[5] = malloc(sizeof(t_img));
+		if (!data->mlx->img[5])
+			return (1);
+	}
+	if (!data->mlx->img[5]->img)
+	{
+		printf("Création image...\n");
+		data->mlx->img[5]->img = mlx_new_image(data->mlx->mlx, WIDTH, HEIGHT);
+		if (!data->mlx->img[5]->img)
+		{
+			printf("Erreur : mlx_new_image a échoué !\n");
+			return (1);
+		}
+		data->mlx->img[5]->width = WIDTH;
+		data->mlx->img[5]->height = HEIGHT;
+		printf("Image dimensions: %d x %d\n", data->mlx->img[5]->width, data->mlx->img[5]->height);
+		data->mlx->img[5]->addr = mlx_get_data_addr(
+			data->mlx->img[5]->img,
+			&data->mlx->img[5]->bpp,
+			&data->mlx->img[5]->line_len,
+			&data->mlx->img[5]->endian
+		);
+
+		if (!data->mlx->img[5]->addr)
+		{
+			printf("Erreur : mlx_get_data_addr a échoué !\n");
+			return (1);
+		}
+		printf("Image créée avec succès : %p | Addr: %p\n", data->mlx->img[5]->img, data->mlx->img[5]->addr);
+	}
+	fill_background(data);
 	return (0);
 }
 
 int	ft_play(t_data *data)
 {
+	laod_background(data);
+	ft_raycasting(data);
 	ft_rotate(data);
+	draw_player_to_image(data);
 	ft_move(data);
-	draw_player(data);
+	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, data->mlx->img[5]->img, 0, 0);
 	return (0);
 }
-// int	press_key(unsigned int keycode, t_data *data)
-// {
-// 	double	new_x;
-// 	double	new_y;
-
-// 	new_x = data->player->pos_x;
-// 	new_y = data->player->pos_y;
-// 	direction_key(keycode, data);
-// 	if (keycode == KEY_ESC)
-// 	{
-// 		ft_free_data(data);
-// 		exit(0);
-// 	}
-// 	if (keycode == KEY_W || keycode == KEY_Z)
-// 	{
-// 		new_x += data->raycast->dir_x * MOVE_SPEED;
-// 		new_y += data->raycast->dir_y * MOVE_SPEED;
-// 	}
-// 	if (keycode == KEY_S)
-// 	{
-// 		new_x -= data->raycast->dir_x * MOVE_SPEED;
-// 		new_y -= data->raycast->dir_y * MOVE_SPEED;
-// 	}
-// 	if (keycode == KEY_A || keycode == KEY_Q)
-// 	{
-// 		new_x -= data->raycast->plane_x * MOVE_SPEED;
-// 		new_y -= data->raycast->plane_y * MOVE_SPEED;
-// 	}
-// 	if (keycode == KEY_D)
-// 	{
-// 		new_x += data->raycast->plane_x * MOVE_SPEED;
-// 		new_y += data->raycast->plane_y * MOVE_SPEED;
-// 	}
-// 	printf("Dir: (%f, %f)\n", data->raycast->dir_x, data->raycast->dir_y);
-// 	printf("Plane: (%f, %f)\n", data->raycast->plane_x, data->raycast->plane_y);
-// 	printf("New pos: (%f, %f)\n", new_x, new_y);
-// 	if (is_valid_move(new_x, new_y, data))
-// 	{
-// 		printf("new_x = %f\n", new_x);
-// 		printf("new_y = %f\n", new_y);
-// 		data->player->pos_x = new_x;
-// 		data->player->pos_y = new_y;
-// 	}
-// 	else
-// 		printf("Mouvement bloqué !\n");
-// 	// mlx_clear_window(data->mlx->mlx, data->mlx->win);
-// 	draw_ray(data);
-// 	draw_player(data);
-// 	return (0);
-// }

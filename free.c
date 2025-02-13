@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 23:44:57 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/12 15:29:56 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/13 02:15:32 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_free_data(t_data *data)
 	{
 		if (data->mlx->mlx)
 		{
-			ft_free_img(data->mlx, 4);
+			ft_free_img(data->mlx, IMG_COUNT);
 			if (data->mlx->win)
 				mlx_destroy_window(data->mlx->mlx, data->mlx->win);
 			mlx_destroy_display(data->mlx->mlx);
@@ -65,12 +65,14 @@ int	ft_free_img(t_mlx *mlx, int index)
 	int	i;
 
 	i = 0;
-	while (i <= index)
+	(void)index;
+	while (i < IMG_COUNT)
 	{
 		if (mlx->img[i])
 		{
 			mlx_destroy_image(mlx->mlx, mlx->img[i]->img);
 			free(mlx->img[i]);
+			mlx->img[i] = NULL;
 		}
 		i++;
 	}

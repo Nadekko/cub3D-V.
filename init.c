@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:52:07 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/12 13:46:47 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/13 02:15:24 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,14 @@ int	ft_clean_init_raycast(t_data *data)
 	data->raycast->map_y = 0;
 	return (0);
 }
+
+// int ft_clean_init_mlx(t_data *data)
+// {
+// 	data->mlx = NULL;
+// 	data->mlx->mlx = NULL;
+// 	data->mlx->win = NULL;
+// 	return (0);
+// }
 
 void	ft_clean_init_move(t_data *data)
 {

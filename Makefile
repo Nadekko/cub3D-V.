@@ -14,6 +14,9 @@ SRC = main.c \
 	exec/convert_map.c \
 	exec/raycast.c \
 	exec/move.c \
+	exec/draw.c \
+	exec/draw_utils.c \
+	exec/exec_utils.c \
 
 HEADER = cub.h
 

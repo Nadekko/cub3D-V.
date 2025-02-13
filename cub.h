@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/12 15:27:03 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/13 03:24:48 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # define HEIGHT 512
 # define WIDTH 1024
+# define IMG_COUNT 6
 # define PIXEL 48
 # define FOV 0.66
 # define ROT_SPEED 0.1
@@ -76,7 +77,7 @@ typedef struct s_mlx
 {
 	void		*mlx;
 	void		*win;
-	t_img		*img[5];
+	t_img		*img[IMG_COUNT];
 }				t_mlx;
 
 typedef struct s_raycast
@@ -138,9 +139,10 @@ int				ft_check_player(char **map);
 int				ft_clean_init_data(t_data *data);
 int				ft_clean_init_player(t_data *data);
 int				ft_clean_init_raycast(t_data *data);
+void			ft_clean_init_move(t_data *data);
+// int				ft_clean_init_mlx(t_data *data);
 int				mlx_start(t_data *data);
 int				mlx_window_init(t_data *data);
-void			ft_clean_init_move(t_data *data);
 
 
 /*		UTILS		*/
@@ -154,8 +156,8 @@ int				ft_free_data(t_data *data);
 
 /*		CHECK_TEXTURES		*/
 int				ft_check_textures(t_data *data);
-t_img			*ft_init_img(t_mlx *mlx, char *path);
 int				ft_check_rgb(t_data *data);
+t_img			*ft_init_img(t_mlx *mlx, char *path);
 
 /*		CONVERT_MAP			*/
 int				**ft_convert_map(char **map);
@@ -165,12 +167,27 @@ int				ft_get_player_pos(t_data *data);
 int				ft_get_player_dir(t_data *data);
 
 /*		TEST		*/
+						/*	DRAW	*/
 void			draw_player(t_data *data);
 // void			draw_wall(t_data *data);
 void			draw_wall(t_data *data, int x, int draw_start, int draw_end,
 					int color);
+void			draw_ceiling_and_floor(t_data *data, int color_ceiling,
+					int color_floor);
 // void			draw_floor(t_data *data);
 // void			draw_ray(t_data *data);
+					/*	DRAW UTILS	*/
+unsigned int	get_pixel(t_img img, int x, int y);
+void			put_pixel(t_img *img, int x, int y, int color);
+void			put_img_to_img(t_data *data, t_img src, int x, int y);
+void			draw_wall_to_image(t_data *data, int x, int draw_start,
+					int draw_end, int color);
+void			draw_player_to_image(t_data *data);
+void			draw_floor(t_data *data);
+void			draw_celing(t_data *data);
+
+
+
 void			display_game(t_data *data);
 int				key_press(int keycode, t_data *data);
 int				key_release(int keycode, t_data *data);

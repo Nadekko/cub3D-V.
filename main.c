@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:20:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/12 18:30:30 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/12 22:05:29 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	main(int ac, char **av, char **env)
 				printf("%s", data.map->map_tab[i]);
 				i++;
 			}
+			// ft_clean_init_mlx(&data);
 			if (mlx_start(&data))
 				return (ft_free_data(&data), ft_free_tab(test),
 					ft_putendl_fd("Error initalizing mlx failed", 2), 1);

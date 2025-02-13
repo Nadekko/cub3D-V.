@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:35:32 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/11 17:03:09 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/13 02:48:10 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ int	ft_check_textures(t_data *data)
 		return (1);
 	data->mlx->img[4] = ft_init_img(data->mlx, "./textures/paws.xpm");
 	if (!data->mlx->img[4])
+		return (1);
+	data->mlx->img[5] = ft_calloc(1, sizeof(t_img));
+	if (!data->mlx->img[5])
 		return (1);
 	return (0);
 }
