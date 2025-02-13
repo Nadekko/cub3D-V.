@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:20:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/13 13:26:38 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:18:38 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int ac, char **av, char **env)
 		}
 		else
 			return (ft_free_data(&data), ft_free_tab(test),
-				ft_putendl_fd("Error invalid map file", 2), 1);
+				ft_putendl_fd("Error invalid file", 2), 1);
 		ft_free_tab(test);
 		data.map->width = ft_strlen(data.map->map_tab[0]);
 		data.map->height = ft_tab_len(data.map->map_tab);
@@ -91,6 +91,14 @@ int	main(int ac, char **av, char **env)
 			printf("}\n");
 			i++;
 		}
+		printf("floor hexa = 0x%X", ft_convert_base_16(data.texture_f->red));
+		printf("%X", ft_convert_base_16(data.texture_f->green));
+		printf("%XFF\n", ft_convert_base_16(data.texture_f->blue));
+		write(1, "ceiling hexa = 0x", 17);
+		ft_putnbr16(data.texture_f->red, 'X');
+		ft_putnbr16(data.texture_f->green, 'X');
+		ft_putnbr16(data.texture_f->blue, 'X');
+		write(1, "FF\n", 3);
 		ft_clean_init_player(&data);
 		ft_clean_init_raycast(&data);
 		ft_clean_init_move(&data);

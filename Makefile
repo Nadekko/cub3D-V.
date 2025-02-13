@@ -35,7 +35,7 @@ YELLOW = \033[0;33m
 PURPLE = \033[0;35m
 NC = \033[0m
 
-all: $(MiniLibX_exec) $(NAME)
+all: $(MiniLibX_exec) $(LIBFT) $(NAME)
 
 $(NAME): $(OBJ) $(HEADER) $(LIBFT) $(MiniLibX_exec)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(MiniLibX_exec) -lXext -lX11 -lm

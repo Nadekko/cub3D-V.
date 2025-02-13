@@ -53,7 +53,8 @@ SRCS = ft_atoi.c \
 	ft_strncpy.c \
 	ft_strdup_tab.c \
 	ft_is_whitespaces.c \
-	ft_strlchr.c
+	ft_strlchr.c \
+	ft_convert_base_16.c
 
 OBJS = $(SRCS:.c=.o)
 

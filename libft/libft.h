@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:33:02 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/13 13:25:04 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:43:58 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int				ft_atoi(const char *nptr);
 int				ft_atoi_char(const char nptr);
 long long		ft_atoll(char *str);
 size_t			ft_nbr_length(int n);
+unsigned int	ft_convert_base_16(unsigned int nb);
 
 /*              Memory manipulation        */
 void			ft_bzero(void *s, size_t n);

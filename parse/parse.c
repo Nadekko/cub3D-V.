@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:06 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/13 13:27:20 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:30:51 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	**ft_read_map(char *map)
 		return (NULL);
 	size = ft_count_line(map);
 	if (!size)
-		return (NULL);
+		return (close(fd), NULL);
 	ret = ft_calloc(size, sizeof(char *));
 	if (!ret)
 		return (close(fd), NULL);
@@ -145,30 +145,32 @@ int	ft_get_textures(char **file, t_data *data, int i, int j)
 {
 	char	*tmp;
 
-	if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'N')
+	if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'N' && data->texture_n == NULL)
 		data->texture_n = ft_get_textures_path(file[i], "NO");
-	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'S')
+	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'S' && data->texture_s == NULL)
 		data->texture_s = ft_get_textures_path(file[i], "SO");
-	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'W')
+	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'W' && data->texture_w == NULL)
 		data->texture_w = ft_get_textures_path(file[i], "WE");
-	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'E')
+	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'E' && data->texture_e == NULL)
 		data->texture_e = ft_get_textures_path(file[i], "EA");
-	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'F')
+	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'F' && data->texture_f == NULL)
 	{
 		data->texture_f = ft_calloc(1, sizeof(t_color));
 		if (!data->texture_f)
 			return (1);
 		tmp = ft_get_textures_path(file[i], "F");
-		ft_get_rgb_values('F', tmp, data);
+		if (ft_get_rgb_values('F', tmp, data))
+			return (free(tmp), 1);
 		free(tmp);
 	}
-	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'C')
+	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'C' && data->texture_c == NULL)
 	{
 		data->texture_c = ft_calloc(1, sizeof(t_color));
 		if (!data->texture_c)
 			return (1);
 		tmp = ft_get_textures_path(file[i], "C");
-		ft_get_rgb_values('C', tmp, data);
+		if (ft_get_rgb_values('C', tmp, data))
+			return (free(tmp), 1);
 		free(tmp);
 	}
 	return (0);
@@ -205,8 +207,8 @@ void	ft_get_map(char **file, int *i, int j, t_data *data)
 
 int	ft_check_data(t_data *data)
 {
-	return (data->texture_n != NULL && data->map != NULL
-		&& data->texture_f != NULL && data->texture_n != NULL
+	return (data->map != NULL && data->texture_n != NULL
+		&& data->texture_f != NULL && data->texture_c != NULL
 		&& data->texture_s != NULL && data->texture_e != NULL
 		&& data->texture_w != NULL);
 }
@@ -220,7 +222,7 @@ int	ft_get_data(t_data *data, char **file)
 	while (file[i])
 	{
 		j = 0;
-		while (ft_is_whitespaces(file[i][j]))
+		while (file[i] && file[i][j] && ft_is_whitespaces(file[i][j]))
 		{
 			j++;
 			if (!file[i][j] && file[i])
@@ -229,10 +231,14 @@ int	ft_get_data(t_data *data, char **file)
 				j = 0;
 			}
 		}
-		ft_get_textures(file, data, i, j);
-		ft_get_map(file, &i, j, data);
 		if (file[i])
-			i++;
+		{
+			if (ft_get_textures(file, data, i, j))
+				return (0);
+			ft_get_map(file, &i, j, data);
+			if (file[i])
+				i++;
+		}
 	}
 	return (ft_check_data(data));
 }
