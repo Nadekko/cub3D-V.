@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 22:10:19 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/14 16:33:31 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/14 21:14:22 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ int	ft_get_player_pos(t_data *data)
 		{
 			if (data->map->map_int[i][j] == 3)
 			{
-				data->player->pos_y = (double)i;
-				data->player->pos_x = (double)j;
+				data->player->pos_y = (double)i + 0.5;
+				data->player->pos_x = (double)j + 0.5;
 				return (0);
 			}
 			j++;

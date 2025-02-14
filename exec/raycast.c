@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 20:49:28 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/14 16:25:02 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/14 21:06:25 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	ft_raycasting(t_data *data)
 	{
 		init_raycasting(data, i);
 		side = algo_DDA(data);
-		compute_wall_dist(data, side);
+		compute_wall_dist(data, side);	
 		draw_wall_column(data, side, i);
 		i++;
 	}
