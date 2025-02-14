@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 22:10:19 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/12 22:10:40 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/14 16:33:31 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,30 @@ int	ft_get_player_dir(t_data *data)
 			{
 				data->raycast->dir_x = 0;
 				data->raycast->dir_y = -1;
+				data->raycast->plane_x = 0.66;
+				data->raycast->plane_y = 0;
+				
 			}
 			else if (data->map->map_tab[i][j] == 'S')
 			{
 				data->raycast->dir_x = 0;
 				data->raycast->dir_y = 1;
+				data->raycast->plane_x = -0.66;
+				data->raycast->plane_y = 0;
 			}
 			else if (data->map->map_tab[i][j] == 'E')
 			{
 				data->raycast->dir_x = 1;
 				data->raycast->dir_y = 0;
+				data->raycast->plane_x = 0;
+				data->raycast->plane_y = 0.66;
 			}
 			else if (data->map->map_tab[i][j] == 'W')
 			{
 				data->raycast->dir_x = -1;
 				data->raycast->dir_y = 0;
+				data->raycast->plane_x = 0;
+				data->raycast->plane_y = -0.66;
 			}
 			j++;
 		}

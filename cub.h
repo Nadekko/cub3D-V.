@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/13 20:54:55 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/14 16:36:14 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define IMG_COUNT 6
 # define PIXEL 48
 # define FOV 0.66
-# define ROT_SPEED 0.1
-# define MOVE_SPEED 0.1
+# define ROT_SPEED 0.09
+# define MOVE_SPEED 0.08
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115

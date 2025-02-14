@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:52:07 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/13 20:53:22 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/14 16:31:27 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,12 @@ int	ft_clean_init_raycast(t_data *data)
 	data->raycast = ft_calloc(1, sizeof(t_raycast));
 	if (!data->raycast)
 		return (1);
-	if (!ft_get_player_dir(data))
-		return (1);
 	data->raycast->delta_x = 0;
 	data->raycast->delta_y = 0;
-	data->raycast->dir_x = -1;
+	data->raycast->dir_x = 0;
 	data->raycast->dir_y = 0;
 	data->raycast->plane_x = 0;
-	data->raycast->plane_y = 0.66;
-	data->raycast->plane_x = -data->raycast->dir_y * FOV;
-	data->raycast->plane_y = data->raycast->dir_x * FOV;
+	data->raycast->plane_y = 0;
 	data->raycast->camera_x = 0;
 	data->raycast->ray_x = 0;
 	data->raycast->ray_y = 0;
@@ -66,6 +62,8 @@ int	ft_clean_init_raycast(t_data *data)
 	data->raycast->line_height = 0;
 	data->raycast->step_x = 0;
 	data->raycast->step_y = 0;
+	if (!ft_get_player_dir(data))
+		return (1);
 	return (0);
 }
 
