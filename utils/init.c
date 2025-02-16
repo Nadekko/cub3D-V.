@@ -6,11 +6,11 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:52:07 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/14 20:45:54 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/16 21:45:48 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub.h"
 
 int	ft_clean_init_data(t_data *data)
 {
@@ -60,6 +60,7 @@ int	ft_clean_init_raycast(t_data *data)
 	data->raycast->draw_start = 0;
 	data->raycast->draw_end = 0;
 	data->raycast->line_height = 0;
+	data->raycast->side = 0;
 	data->raycast->step_x = 0;
 	data->raycast->step_y = 0;
 	if (!ft_get_player_dir(data))

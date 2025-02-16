@@ -7,16 +7,19 @@ NAME = cub3d
 SRC = main.c \
 	parse/parse.c \
 	parse/parse_map.c \
-	init.c \
-	free.c \
-	utils.c \
+	utils/init.c \
+	utils/free.c \
+	utils/utils.c \
+	utils/convert_map.c \
 	parse/check_textures.c \
-	exec/convert_map.c \
-	exec/raycast.c \
-	exec/move.c \
 	exec/draw.c \
 	exec/draw_utils.c \
 	exec/exec_utils.c \
+	exec/move.c \
+	exec/move_rotate.c \
+	exec/move_utils.c \
+	exec/raycasting.c \
+	exec/raycasting_init.c \
 
 HEADER = cub.h
 

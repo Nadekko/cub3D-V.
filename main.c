@@ -5,14 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 11:20:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/14 21:13:41 by andjenna         ###   ########.fr       */
+/*   Created: 2025/02/16 21:41:31 by andjenna          #+#    #+#             */
+/*   Updated: 2025/02/16 21:42:16 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	display_game(t_data *data)
+static int	ft_play(t_data *data)
+{
+	load_background(data);
+	ft_raycasting(data);
+	draw_player_to_image(data);
+	ft_rotate(data);
+	ft_move(data);
+	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, data->mlx->img[5]->img, 0, 0);
+	return (0);
+}
+
+static void	ft_display_game(t_data *data)
 {
 	mlx_hook(data->mlx->win, 17, 1L << 17, ft_free_exit, data);
 	mlx_hook(data->mlx->win, 2, 1L << 0, key_press, data);
@@ -104,7 +115,7 @@ int	main(int ac, char **av, char **env)
 		ft_clean_init_move(&data);
 		if (!ft_get_player_pos(&data))
 			printf("player pos x = %f, player pos y = %f\n", data.player->pos_x, data.player->pos_y);
-		display_game(&data);
+		ft_display_game(&data);
 		ft_free_data(&data);
 	}
 	return (0);

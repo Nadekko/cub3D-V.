@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   convert_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:05:02 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/01/14 15:19:39 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/16 21:46:20 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-int	ft_convert_line(char *line, int **tab, int i)
+static int	ft_convert_line(char *line, int **tab, int i)
 {
 	int	j;
 

@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/14 21:13:47 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/16 22:30:44 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define IMG_COUNT 6
 # define PIXEL 48
 # define FOV 0.66
-# define ROT_SPEED 0.09
-# define MOVE_SPEED 0.08
+# define ROT_SPEED 0.05
+# define MOVE_SPEED 0.05
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
@@ -35,10 +35,6 @@
 # define UP 65362
 # define RIGHT 65363
 # define DOWN 65364
-// # define LEFT	37
-// # define UP	38
-// # define RIGHT	39
-// # define DOWN	40
 
 typedef struct s_color
 {
@@ -106,6 +102,7 @@ typedef struct s_raycast
 	double		wall_dist;
 	int			map_x;
 	int			map_y;
+	int 		side;
 	int			draw_start;
 	int			draw_end;
 
@@ -158,6 +155,7 @@ int				mlx_window_init(t_data *data);
 
 
 /*		UTILS		*/
+int	**ft_convert_map(char **map);
 size_t			ft_longest_line(char **map);
 char			*ft_get_textures_path(char *path, char *entry);
 char			*ft_join_to_comb_empty(char *line, size_t longest_line);
@@ -175,34 +173,30 @@ t_img			*ft_init_img(t_mlx *mlx, char *path);
 /*		CONVERT_MAP			*/
 int				**ft_convert_map(char **map);
 
-/*		RAYCAST_UTILS		*/
+/*		RAYCASTING		*/
+void			init_raycasting(t_data *data, int i);
+void			ft_raycasting(t_data *data);
 int				ft_get_player_pos(t_data *data);
 int				ft_get_player_dir(t_data *data);
 
-/*		TEST		*/
-						/*	DRAW	*/
-void			draw_ceiling_and_floor(t_data *data, int color_ceiling,
-					int color_floor);
+/*		DRAW				*/
 void			draw_wall_to_image(t_data *data, int x, int draw_start,
-					int draw_end, int color);
+					int draw_end);
 void			draw_player_to_image(t_data *data);
 void			draw_floor(t_data *data);
 void			draw_celing(t_data *data);
-
-					/*	DRAW UTILS	*/
-unsigned int	get_pixel(t_img img, int x, int y);
+/*		DRAW UTILS			*/
 void			put_pixel(t_img *img, int x, int y, int color);
 void			put_img_to_img(t_data *data, t_img src, int x, int y);
+int				load_background(t_data *data);
 
-
-
-void			display_game(t_data *data);
+/*		MOVE				*/
 int				key_press(int keycode, t_data *data);
 int				key_release(int keycode, t_data *data);
 int				ft_rotate(t_data *data);
 int				ft_move(t_data *data);
-int				is_valid_move(double new_x, double new_y, t_data *data);
-int				ft_play(t_data *data);
-void			ft_raycasting(t_data *data);
+
+
+void			display_game(t_data *data);
 
 #endif
