@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:38:31 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/16 22:30:58 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/17 00:35:20 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	compute_wall_dist(t_data *data)
 		data->raycast->draw_start = 0;
 	data->raycast->draw_end = data->raycast->line_height / 2 + HEIGHT / 2;
 	if (data->raycast->draw_end >= HEIGHT)
-		data->raycast->draw_end = HEIGHT - 1;
+		data->raycast->draw_end = HEIGHT;
 }
 
 void	ft_raycasting(t_data *data)
