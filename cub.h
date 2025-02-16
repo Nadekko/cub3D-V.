@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/16 23:34:26 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/17 00:41:48 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ typedef struct s_raycast
 	double		wall_dist;
 	int			map_x;
 	int			map_y;
-	int 		side;
+	int			side;
 	int			draw_start;
 	int			draw_end;
 
@@ -153,10 +153,9 @@ int				mlx_start(t_data *data);
 int				mlx_window_init(t_data *data);
 // int				ft_clean_init_mlx(t_data *data);
 
-
 /*		UTILS		*/
-int	**ft_convert_map(char **map);
 size_t			ft_longest_line(char **map);
+int				**ft_convert_map(char **map);
 char			*ft_get_textures_path(char *path, char *entry);
 char			*ft_join_to_comb_empty(char *line, size_t longest_line);
 
@@ -194,7 +193,6 @@ int				key_press(int keycode, t_data *data);
 int				key_release(int keycode, t_data *data);
 int				ft_rotate(t_data *data);
 int				ft_move(t_data *data);
-
 
 void			display_game(t_data *data);
 

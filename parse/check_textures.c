@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:35:32 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/13 12:19:35 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/17 00:40:10 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,23 @@ int	ft_check_textures(t_data *data)
 	return (0);
 }
 
+int	ft_check_rgb(t_data *data)
+{
+	if (data->texture_c->red < 0 || data->texture_f->red < 0)
+		return (1);
+	else if (data->texture_c->red > 255 || data->texture_f->red > 255)
+		return (1);
+	else if (data->texture_c->green < 0 || data->texture_f->green < 0)
+		return (1);
+	else if (data->texture_c->green > 255 || data->texture_f->green > 255)
+		return (1);
+	else if (data->texture_c->blue < 0 || data->texture_f->blue < 0)
+		return (1);
+	else if (data->texture_c->blue > 255 || data->texture_f->blue > 255)
+		return (1);
+	return (0);
+}
+
 // int	ft_check_rgb_values(char *texture)
 // {
 // 	char	**tab;
@@ -90,21 +107,3 @@ int	ft_check_textures(t_data *data)
 // 		return (1);
 // 	return (0);
 // }
-
-
-int	ft_check_rgb(t_data *data)
-{
-	if (data->texture_c->red < 0 || data->texture_f->red < 0)
-		return (1);
-	else if (data->texture_c->red > 255 || data->texture_f->red > 255)
-		return (1);
-	else if (data->texture_c->green < 0 || data->texture_f->green < 0)
-		return (1);
-	else if (data->texture_c->green > 255 || data->texture_f->green > 255)
-		return (1);
-	else if (data->texture_c->blue < 0 || data->texture_f->blue < 0)
-		return (1);
-	else if (data->texture_c->blue > 255 || data->texture_f->blue > 255)
-		return (1);
-	return (0);
-}

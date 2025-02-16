@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base_16.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:47:24 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/13 14:10:27 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/17 00:39:13 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ unsigned int	ft_convert_base_16(unsigned int nb)
 		j = j * 10 + hex[--i] - '0';
 	return (j);
 }
-
