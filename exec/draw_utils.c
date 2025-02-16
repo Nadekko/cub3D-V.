@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 22:08:58 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/16 21:49:44 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/16 23:46:16 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,35 +56,7 @@ void	put_img_to_img(t_data *data, t_img src, int x, int y)
 	}
 }
 
-static void	fill_background(t_data *data)
+int	rgb_to_int(int r, int g, int b)
 {
-	draw_celing(data);
-	draw_floor(data);
-}
-
-int	load_background(t_data *data)
-{
-	if (!data->mlx->img[5])
-	{
-		data->mlx->img[5] = malloc(sizeof(t_img));
-		if (!data->mlx->img[5])
-			return (1);
-	}
-	if (!data->mlx->img[5]->img)
-	{
-		data->mlx->img[5]->img = mlx_new_image(data->mlx->mlx, WIDTH, HEIGHT);
-		if (!data->mlx->img[5]->img)
-			return (printf("Erreur : mlx_new_image a échoué !\n"), 1);
-		data->mlx->img[5]->width = WIDTH;
-		data->mlx->img[5]->height = HEIGHT;
-		data->mlx->img[5]->addr = mlx_get_data_addr(
-				data->mlx->img[5]->img,
-				&data->mlx->img[5]->bpp,
-				&data->mlx->img[5]->line_len,
-				&data->mlx->img[5]->endian);
-		if (!data->mlx->img[5]->addr)
-			return (printf("Erreur : mlx_get_data_addr a échoué !\n"), 1);
-	}
-	fill_background(data);
-	return (0);
+	return (r << 16 | g << 8 | b);
 }

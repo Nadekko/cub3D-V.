@@ -6,11 +6,48 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 22:28:29 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/16 22:28:49 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/17 00:10:56 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
+
+static void	ft_clean_init_raycast_2(t_data *data)
+{
+	data->raycast->draw_start = 0;
+	data->raycast->draw_end = 0;
+	data->raycast->line_height = 0;
+	data->raycast->side = 0;
+	data->raycast->step_x = 0;
+	data->raycast->step_y = 0;
+}
+
+int	ft_clean_init_raycast(t_data *data)
+{
+	data->raycast = ft_calloc(1, sizeof(t_raycast));
+	if (!data->raycast)
+		return (1);
+	data->raycast->delta_x = 0;
+	data->raycast->delta_y = 0;
+	data->raycast->dir_x = 0;
+	data->raycast->dir_y = 0;
+	data->raycast->plane_x = 0;
+	data->raycast->plane_y = 0;
+	data->raycast->camera_x = 0;
+	data->raycast->ray_x = 0;
+	data->raycast->ray_y = 0;
+	data->raycast->side_x = 0;
+	data->raycast->side_y = 0;
+	data->raycast->wall_dist = 0;
+	data->raycast->map_x = 0;
+	data->raycast->map_y = 0;
+	ft_clean_init_raycast_2(data);
+	if (!ft_get_player_dir(data))
+		return (1);
+	if (!ft_get_player_pos(data))
+		return (1);
+	return (0);
+}
 
 static void	set_delta(t_data *data)
 {

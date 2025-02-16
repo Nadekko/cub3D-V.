@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 23:44:57 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/16 21:45:43 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/17 00:09:30 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ int	ft_free_int_tab(t_data *data)
 	return (0);
 }
 
+void	ft_free_texture(t_data *data)
+{
+	free(data->texture_f);
+	free(data->texture_c);
+	free(data->texture_n);
+	free(data->texture_s);
+	free(data->texture_e);
+	free(data->texture_w);
+}
+
 int	ft_free_data(t_data *data)
 {
 	if (data->map)
@@ -39,8 +49,7 @@ int	ft_free_data(t_data *data)
 	{
 		if (data->mlx->mlx)
 		{
-			free(data->mlx->img[5]);
-			ft_free_img(data->mlx, IMG_COUNT - 1);
+			ft_free_img(data->mlx, IMG_COUNT);
 			if (data->mlx->win)
 				mlx_destroy_window(data->mlx->mlx, data->mlx->win);
 			mlx_destroy_display(data->mlx->mlx);
@@ -52,13 +61,8 @@ int	ft_free_data(t_data *data)
 		free(data->player);
 	if (data->raycast)
 		free(data->raycast);
-	free(data->texture_f);
-	free(data->texture_c);
-	free(data->texture_n);
-	free(data->texture_s);
-	free(data->texture_e);
-	free(data->texture_w);
-		return (0);
+	ft_free_texture(data);
+	return (0);
 }
 
 int	ft_free_exit(t_data *data)
@@ -86,12 +90,7 @@ int	ft_free_exit(t_data *data)
 		free(data->player);
 	if (data->raycast)
 		free(data->raycast);
-	free(data->texture_f);
-	free(data->texture_c);
-	free(data->texture_n);
-	free(data->texture_s);
-	free(data->texture_e);
-	free(data->texture_w);
+	ft_free_texture(data);
 	exit(0);
 }
 

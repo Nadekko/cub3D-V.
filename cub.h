@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/16 22:30:44 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/16 23:34:26 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define PIXEL 48
 # define FOV 0.66
 # define ROT_SPEED 0.05
-# define MOVE_SPEED 0.05
+# define MOVE_SPEED 0.04
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
@@ -149,9 +149,9 @@ int				ft_clean_init_data(t_data *data);
 int				ft_clean_init_player(t_data *data);
 int				ft_clean_init_raycast(t_data *data);
 void			ft_clean_init_move(t_data *data);
-// int				ft_clean_init_mlx(t_data *data);
 int				mlx_start(t_data *data);
 int				mlx_window_init(t_data *data);
+// int				ft_clean_init_mlx(t_data *data);
 
 
 /*		UTILS		*/
@@ -183,12 +183,11 @@ int				ft_get_player_dir(t_data *data);
 void			draw_wall_to_image(t_data *data, int x, int draw_start,
 					int draw_end);
 void			draw_player_to_image(t_data *data);
-void			draw_floor(t_data *data);
-void			draw_celing(t_data *data);
 /*		DRAW UTILS			*/
 void			put_pixel(t_img *img, int x, int y, int color);
 void			put_img_to_img(t_data *data, t_img src, int x, int y);
 int				load_background(t_data *data);
+int				rgb_to_int(int r, int g, int b);
 
 /*		MOVE				*/
 int				key_press(int keycode, t_data *data);

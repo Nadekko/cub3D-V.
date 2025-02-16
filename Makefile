@@ -7,12 +7,13 @@ NAME = cub3d
 SRC = main.c \
 	parse/parse.c \
 	parse/parse_map.c \
+	parse/check_textures.c \
 	utils/init.c \
 	utils/free.c \
 	utils/utils.c \
 	utils/convert_map.c \
-	parse/check_textures.c \
 	exec/draw.c \
+	exec/draw_background.c \
 	exec/draw_utils.c \
 	exec/exec_utils.c \
 	exec/move.c \
