@@ -3,8 +3,8 @@ SO ./textures/wall_test.xpm
 WE ./textures/player_test24.xpm
 EA ./textures/wall.xpm
 
-F 255,100,235
-C 225,30,205
+F 87,33,98
+C 104,63,199
 
 1111111111111111111
 10000000110000N00001
