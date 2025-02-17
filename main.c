@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:41:31 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/17 00:05:04 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/17 01:00:37 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,6 @@ int	main(int ac, char **av, char **env)
 			printf("}\n");
 			i++;
 		}
-		printf("floor hexa = 0x%X", ft_convert_base_16(data.texture_f->red));
-		printf("%X", ft_convert_base_16(data.texture_f->green));
-		printf("%XFF\n", ft_convert_base_16(data.texture_f->blue));
-		write(1, "ceiling hexa = 0x", 17);
-		ft_putnbr16(data.texture_f->red, 'X');
-		ft_putnbr16(data.texture_f->green, 'X');
-		ft_putnbr16(data.texture_f->blue, 'X');
-		write(1, "FF\n", 3);
 		ft_clean_init_player(&data);
 		ft_clean_init_raycast(&data);
 		ft_clean_init_move(&data);
