@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/17 06:38:45 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/17 13:17:50 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "libft/libft.h"
 # include <math.h>
 
-# define HEIGHT 668 //768
+# define HEIGHT 668 // 768
 # define WIDTH 1024
 # define IMG_COUNT 6
 # define PIXEL 48
@@ -139,10 +139,17 @@ char			**ft_read_map(char *map);
 int				ft_check_map(char **map);
 int				ft_get_data(t_data *data, char **file);
 int				ft_check_map_extension(char *file);
+int				ft_count_line(char *map);
+int				ft_check_line(char *str);
+int				ft_check_data(t_data *data);
+int				ft_check_one_extension(char *map);
+void			ft_skip_whitespaces(char **file, int *i, int *j);
+int				ft_get_textures(char **file, t_data *data, int i, int j);
 
 /*		PARSE_MAP*/
 int				ft_check_map_closed(char **map);
 int				ft_check_player(char **map);
+void			ft_get_map(char **file, int *i, int j, t_data *data);
 
 /*		INIT		*/
 int				ft_clean_init_data(t_data *data);
@@ -150,6 +157,7 @@ int				ft_clean_init_player(t_data *data);
 int				ft_clean_init_raycast(t_data *data);
 void			ft_clean_init_move(t_data *data);
 int				mlx_start(t_data *data);
+int				ft_data_start(t_data *data, char **file);
 int				mlx_window_init(t_data *data);
 // int				ft_clean_init_mlx(t_data *data);
 
@@ -163,6 +171,7 @@ char			*ft_join_to_comb_empty(char *line, size_t longest_line);
 int				ft_free_img(t_mlx *mlx, int n);
 int				ft_free_data(t_data *data);
 int				ft_free_exit(t_data *data);
+void			ft_free_mlx(t_mlx *mlx);
 
 /*		CHECK_TEXTURES		*/
 int				ft_check_textures(t_data *data);

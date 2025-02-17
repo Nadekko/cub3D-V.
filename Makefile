@@ -5,11 +5,15 @@ CFLAGS = -Wall -Wextra -Werror -g3
 NAME = cub3d
 
 SRC = main.c \
+	main_utils.c \
 	parse/parse.c \
+	parse/parse_utils.c \
+	parse/parse_utils2.c \
 	parse/parse_map.c \
 	parse/check_textures.c \
 	utils/init.c \
 	utils/free.c \
+	utils/free_utils.c \
 	utils/utils.c \
 	utils/convert_map.c \
 	exec/draw.c \

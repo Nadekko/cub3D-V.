@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 22:08:58 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/17 06:40:29 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:59:54 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	put_img_to_img(t_data *data, t_img src, int x, int y)
 		while (j < src.height)
 		{
 			if (get_pixel(src, i, j) != 0xFF000000)
-				put_pixel(data->mlx->img[5], (x + i), ((HEIGHT / 3)+ j),
+				put_pixel(data->mlx->img[5], (x + i), ((HEIGHT / 3) + j),
 					get_pixel(src, i, j));
 			j++;
 		}
