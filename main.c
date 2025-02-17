@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:41:31 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/17 13:18:37 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/17 13:20:29 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,13 +125,13 @@ int	ft_init_matrix(t_data *data)
 				2), 1);
 	ft_display_game(data);
 	ft_free_data(data);
+	return (0);
 }
 
 int	ft_init_game(t_data *data, char *map_file)
 {
 	char	**file;
 	size_t	i;
-	size_t	j;
 
 	file = ft_read_map(map_file);
 	if (!file)
