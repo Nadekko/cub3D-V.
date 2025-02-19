@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/19 15:24:05 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:27:05 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define IMG_COUNT 6
 # define PIXEL 48
 # define FOV 0.66
-# define ROT_SPEED 0.01
+# define ROT_SPEED 0.05
 # define MOVE_SPEED 0.06
 # define KEY_W 119
 # define KEY_A 97
