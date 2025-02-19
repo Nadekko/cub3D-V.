@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:24:05 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/19 15:25:02 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:08:05 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@ int	key_release(int keycode, t_data *data)
 
 int	mouse_move(int x, int y, t_data *data)
 {
+	int		i, j;
 	(void)y;
-	if (x > (double)WIDTH / 2)
+	mlx_mouse_get_pos(data->mlx->mlx, data->mlx->win, &i, &j);
+	if (x < i)
 	{
 		rotate_right(data);
 		// data->move.r = 1;
 		// data->move.l = 0;
 	}
-	else if (x < (double)WIDTH / 2)
+	else if (x > i)
 	{
 		rotate_left(data);
 		// data->move.l = 1;

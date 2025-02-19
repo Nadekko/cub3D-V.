@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:35:32 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/19 16:02:23 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:58:28 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	ft_check_textures(t_data *data)
 	data->mlx->img[4] = ft_init_img(data->mlx, "./textures/paws.xpm");
 	if (!data->mlx->img[4])
 		return (1);
-	printf("Textures loaded\n");
 	data->mlx->img[5] = ft_calloc(1, sizeof(t_img));
 	if (!data->mlx->img[5])
 		return (1);
