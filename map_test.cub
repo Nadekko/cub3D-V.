@@ -1,7 +1,7 @@
-NO ./textures/floor_test.xpm
-SO ./textures/wall_test.xpm
-WE ./textures/player_test24.xpm
-EA ./textures/wall.xpm
+NO ./textures/1_48.xpm
+SO ./textures/2_48.xpm
+WE ./textures/3_48.xpm
+EA ./textures/4_48.xpm
 
 F 87,33,98
 C 104,63,199

@@ -6,13 +6,13 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 22:08:58 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/17 20:12:25 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:17:51 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-static unsigned int	get_pixel(t_img img, int x, int y)
+unsigned int	get_pixel(t_img img, int x, int y)
 {
 	return (*(unsigned int *)((img.addr + (y * img.line_len)
 			+ (x * img.bpp / 8))));
@@ -55,6 +55,20 @@ void	put_img_to_img(t_data *data, t_img src, int x, int y)
 		i++;
 	}
 }
+
+/*
+0x000000 = 24_BITS
+0xRRGGBB = 24_BITS
+
+
+R = 0xFF0000 = 8_BITS
+G = 0x00FF00 = 8_BITS
+B = 0x0000FF = 8_BITS
+
+R = 2 ^ 16 = 65536	(256 * 256)
+G = 2 ^ 8 = 256
+B = 2 ^ 0 = 1
+*/
 
 int	rgb_to_int(int r, int g, int b)
 {

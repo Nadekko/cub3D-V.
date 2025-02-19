@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:38:31 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/17 00:35:20 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:17:14 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,47 @@ static void	compute_wall_dist(t_data *data)
 		data->raycast->draw_end = HEIGHT;
 }
 
+void	set_texture(t_data *data, int i)
+{
+	double wall_x;
+
+	if (data->raycast->side == 0)
+	{
+		if (data->raycast->ray_x > 0)
+			data->raycast->texture = NO_TEXTURE;
+		else
+			data->raycast->texture = SO_TEXTURE;
+	}
+	else
+	{
+		if (data->raycast->ray_y > 0)
+			data->raycast->texture = EA_TEXTURE;
+		else
+			data->raycast->texture = WE_TEXTURE;
+	}
+	if (data->raycast->side == 0)
+		wall_x = data->player->pos_y + data->raycast->wall_dist * data->raycast->ray_y;
+	else
+		wall_x = data->player->pos_x + data->raycast->wall_dist * data->raycast->ray_x;
+	wall_x -= floor(wall_x);
+	int	tex_x = (int)(wall_x * (double)PIXEL);
+	if ((data->raycast->side == 0 && data->raycast->ray_x > 0) || (data->raycast->side == 1 && data->raycast->ray_y < 0))
+		tex_x = PIXEL - tex_x - 1;
+	int y = data->raycast->draw_start;
+	int	color = 0;
+	int	tex_y = 0;
+	double step = (double)PIXEL / data->raycast->line_height;
+	double tex_p = (data->raycast->draw_start - HEIGHT / 2 + data->raycast->line_height / 2) * step;
+	while (y < data->raycast->draw_end)
+	{
+		tex_y = (int)tex_p % PIXEL;
+		tex_p += step;
+		color = get_pixel(*data->mlx->img[data->raycast->texture], tex_x, tex_y);
+		put_pixel(data->mlx->img[5], i, y, color);
+		y++;
+	}
+}
+
 void	ft_raycasting(t_data *data)
 {
 	int	i;
@@ -65,8 +106,9 @@ void	ft_raycasting(t_data *data)
 		init_raycasting(data, i);
 		algo_dda(data);
 		compute_wall_dist(data);
-		draw_wall_to_image(data, i, data->raycast->draw_start,
-			data->raycast->draw_end);
+		set_texture(data, i);
+		// draw_wall_to_image(data, i, data->raycast->draw_start,
+		// 	data->raycast->draw_end);
 		i++;
 	}
 }

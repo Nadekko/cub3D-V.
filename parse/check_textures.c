@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:35:32 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/17 06:28:15 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:02:23 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,22 @@ t_img	*ft_init_img(t_mlx *mlx, char *path)
 
 int	ft_check_textures(t_data *data)
 {
-	data->mlx->img[0] = ft_init_img(data->mlx, data->texture_n);
-	if (!data->mlx->img[0])
+	data->mlx->img[NO_TEXTURE] = ft_init_img(data->mlx, data->texture_n);
+	if (!data->mlx->img[NO_TEXTURE])
 		return (1);
-	data->mlx->img[1] = ft_init_img(data->mlx, data->texture_s);
-	if (!data->mlx->img[1])
+	data->mlx->img[SO_TEXTURE] = ft_init_img(data->mlx, data->texture_s);
+	if (!data->mlx->img[SO_TEXTURE])
 		return (1);
-	data->mlx->img[2] = ft_init_img(data->mlx, data->texture_w);
-	if (!data->mlx->img[2])
+	data->mlx->img[WE_TEXTURE] = ft_init_img(data->mlx, data->texture_w);
+	if (!data->mlx->img[WE_TEXTURE])
 		return (1);
-	data->mlx->img[3] = ft_init_img(data->mlx, data->texture_e);
-	if (!data->mlx->img[3])
+	data->mlx->img[EA_TEXTURE] = ft_init_img(data->mlx, data->texture_e);
+	if (!data->mlx->img[EA_TEXTURE])
 		return (1);
 	data->mlx->img[4] = ft_init_img(data->mlx, "./textures/paws.xpm");
 	if (!data->mlx->img[4])
 		return (1);
+	printf("Textures loaded\n");
 	data->mlx->img[5] = ft_calloc(1, sizeof(t_img));
 	if (!data->mlx->img[5])
 		return (1);

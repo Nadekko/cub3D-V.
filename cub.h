@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/17 13:17:50 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:12:55 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define PIXEL 48
 # define FOV 0.66
 # define ROT_SPEED 0.05
-# define MOVE_SPEED 0.06
+# define MOVE_SPEED 0.05
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
@@ -35,6 +35,10 @@
 # define UP 65362
 # define RIGHT 65363
 # define DOWN 65364
+# define NO_TEXTURE 0
+# define SO_TEXTURE 1
+# define WE_TEXTURE 2
+# define EA_TEXTURE 3
 
 typedef struct s_color
 {
@@ -103,6 +107,7 @@ typedef struct s_raycast
 	int			map_x;
 	int			map_y;
 	int			side;
+	int			texture;
 	int			draw_start;
 	int			draw_end;
 
@@ -196,6 +201,7 @@ void			put_pixel(t_img *img, int x, int y, int color);
 void			put_img_to_img(t_data *data, t_img src, int x, int y);
 int				load_background(t_data *data);
 int				rgb_to_int(int r, int g, int b);
+unsigned int	get_pixel(t_img img, int x, int y);
 
 /*		MOVE				*/
 int				key_press(int keycode, t_data *data);
