@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 18:34:45 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/22 21:01:09 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#ifndef CUB_BONUS_H
+# define CUB_BONUS_H
 
 # include "./minilibx-linux/mlx.h"
 # include "libft/libft.h"
@@ -23,7 +23,7 @@
 # define PIXEL 48
 # define FOV 0.66
 # define ROT_SPEED 0.05
-# define MOVE_SPEED 0.05
+# define MOVE_SPEED 0.06
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
@@ -110,6 +110,10 @@ typedef struct s_raycast
 	int			texture;
 	int			draw_start;
 	int			draw_end;
+	int			tex_x;
+	int			tex_y;
+	double		tex_p;
+	double		wall_x;
 
 }				t_raycast;
 
@@ -138,7 +142,6 @@ typedef struct s_data
 	char		*texture_w;
 
 }				t_data;
-
 /*		PARSE				*/
 char			**ft_read_map(char *map);
 int				ft_check_map(char **map);
@@ -208,7 +211,7 @@ int				key_release(int keycode, t_data *data);
 int				ft_rotate(t_data *data);
 int				ft_move(t_data *data);
 
-int				ft_play(t_data *data);
 void			ft_display_game(t_data *data);
+
 
 #endif

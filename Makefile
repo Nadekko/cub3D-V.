@@ -6,53 +6,51 @@ NAME = cub3d
 
 NAME_B = cub3d_bonus
 
-SRC = main.c \
-	main_utils.c \
-	parse/parse.c \
-	parse/parse_utils.c \
-	parse/parse_utils2.c \
-	parse/parse_map.c \
-	parse/check_textures.c \
-	utils/init.c \
-	utils/free.c \
-	utils/free_utils.c \
-	utils/utils.c \
-	utils/convert_map.c \
-	exec/draw.c \
-	exec/draw_background.c \
-	exec/draw_utils.c \
-	exec/exec_utils.c \
-	exec/move.c \
-	exec/move_rotate.c \
-	exec/move_utils.c \
-	exec/raycasting.c \
-	exec/raycasting_init.c \
+SRC = _mandatory/main.c \
+	_mandatory/game_event.c \
+	_mandatory/parse/parse.c \
+	_mandatory/parse/parse_utils.c \
+	_mandatory/parse/parse_utils2.c \
+	_mandatory/parse/parse_map.c \
+	_mandatory/parse/check_textures.c \
+	_mandatory/utils/init.c \
+	_mandatory/utils/free.c \
+	_mandatory/utils/free_utils.c \
+	_mandatory/utils/utils.c \
+	_mandatory/utils/convert_map.c \
+	_mandatory/exec/draw.c \
+	_mandatory/exec/draw_background.c \
+	_mandatory/exec/draw_utils.c \
+	_mandatory/exec/exec_utils.c \
+	_mandatory/exec/move.c \
+	_mandatory/exec/move_rotate.c \
+	_mandatory/exec/raycasting.c \
+	_mandatory/exec/raycasting_init.c \
 
-SRC_B = bonus/main_bonus.c \
-	main_utils.c \
-	parse/parse.c \
-	parse/parse_utils.c \
-	parse/parse_utils2.c \
-	parse/parse_map.c \
-	parse/check_textures.c \
-	utils/init.c \
-	utils/free.c \
-	utils/free_utils.c \
-	utils/utils.c \
-	utils/convert_map.c \
-	exec/draw.c \
-	exec/draw_background.c \
-	exec/draw_utils.c \
-	exec/exec_utils.c \
-	exec/move.c \
-	bonus/move_rotate_bonus.c \
-	bonus/move_utils_bonus.c \
-	exec/raycasting.c \
-	exec/raycasting_init.c \
+SRC_B = _bonus/main_bonus.c \
+		_bonus/game_event_bonus.c \
+		_bonus/parse_bonus/parse.c \
+		_bonus/parse_bonus/parse_utils.c \
+		_bonus/parse_bonus/parse_utils2.c \
+		_bonus/parse_bonus/parse_map.c \
+		_bonus/parse_bonus/check_textures.c \
+		_bonus/utils_bonus/init.c \
+		_bonus/utils_bonus/free.c \
+		_bonus/utils_bonus/free_utils.c \
+		_bonus/utils_bonus/utils.c \
+		_bonus/utils_bonus/convert_map.c \
+		_bonus/exec_bonus/draw.c \
+		_bonus/exec_bonus/draw_background.c \
+		_bonus/exec_bonus/draw_utils.c \
+		_bonus/exec_bonus/exec_utils.c \
+		_bonus/exec_bonus/move.c \
+		_bonus/exec_bonus/move_rotate.c \
+		_bonus/exec_bonus/raycasting.c \
+		_bonus/exec_bonus/raycasting_init.c \
 
 HEADER = cub.h
 
-HEADER_B = bonus/cub_bonus.h
+HEADER_B = cub_bonus.h
 
 LIBFT = libft/libft.a
 
@@ -79,7 +77,7 @@ $(NAME): $(OBJ) $(HEADER) $(LIBFT) $(MiniLibX_exec)
 			|   	[OK] $(NAME) created   	   |\n \
 			*----------------------------------*$(NC)"
 
-bonus: $(MiniLibX_exec) $(OBJ_B) $(HEADER_B) $(LIBFT)
+bonus: $(MiniLibX_exec) $(OBJ_B) $(HEADER_B) $(LIBFT) 
 	$(CC) $(CFLAGS) -o $(NAME_B) $(OBJ_B) $(LIBFT) $(MiniLibX_exec) -lXext -lX11 -lm
 	@echo "$(GREEN)		*----------------------------------*\n \
 			|   	[OK] $(NAME_B) created   	   |\n \
