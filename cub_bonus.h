@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 22:29:49 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/22 22:58:45 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,6 +213,7 @@ int				ft_rotate(t_data *data);
 int				ft_move(t_data *data);
 
 void			ft_display_game(t_data *data);
+int				mouse_move(int x,int y, t_data *data);
 
 
 #endif
