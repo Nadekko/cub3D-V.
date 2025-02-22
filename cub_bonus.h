@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 21:01:09 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/22 22:29:49 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define IMG_COUNT 6
 # define PIXEL 48
 # define FOV 0.66
-# define ROT_SPEED 0.05
+# define ROT_SPEED 0.02
 # define MOVE_SPEED 0.06
 # define KEY_W 119
 # define KEY_A 97
@@ -142,6 +142,7 @@ typedef struct s_data
 	char		*texture_w;
 
 }				t_data;
+
 /*		PARSE				*/
 char			**ft_read_map(char *map);
 int				ft_check_map(char **map);

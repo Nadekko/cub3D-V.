@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:32:27 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/22 18:32:41 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/22 22:11:34 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_play(t_data *data)
 {
 	load_background(data);
 	ft_raycasting(data);
-	draw_player_to_image(data);
+	// draw_player_to_image(data);
 	ft_rotate(data);
 	ft_move(data);
 	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,

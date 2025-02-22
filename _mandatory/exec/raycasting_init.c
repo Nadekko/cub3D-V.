@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 22:28:29 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/22 18:15:45 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/22 21:39:49 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ static void	ft_clean_init_raycast_2(t_data *data)
 	data->raycast->step_x = 0;
 	data->raycast->step_y = 0;
 	data->raycast->texture = 0;
+	data->raycast->tex_x = 0;
+	data->raycast->tex_y = 0;
+	data->raycast->tex_p = 0;
+	data->raycast->wall_x = 0;
 }
 
 int	ft_clean_init_raycast(t_data *data)
