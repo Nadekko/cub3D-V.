@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:38:31 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/22 22:51:01 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 01:34:37 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,4 +135,5 @@ void	ft_raycasting(t_data *data)
 		put_texture(data, i);
 		i++;
 	}
+	// init_mini_map(data);
 }

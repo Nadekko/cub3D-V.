@@ -42,6 +42,7 @@ SRC_B = _bonus/main_bonus.c \
 		_bonus/exec_bonus/draw.c \
 		_bonus/exec_bonus/draw_background.c \
 		_bonus/exec_bonus/draw_utils.c \
+		_bonus/exec_bonus/mini_map.c \
 		_bonus/exec_bonus/exec_utils.c \
 		_bonus/exec_bonus/move.c \
 		_bonus/exec_bonus/move_rotate.c \
@@ -116,4 +117,6 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+re_bonus: fclean bonus
+
+.PHONY: all clean fclean re re_bonus

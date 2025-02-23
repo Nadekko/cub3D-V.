@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:35:32 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 18:22:14 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 02:44:59 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,37 @@ t_img	*ft_init_img(t_mlx *mlx, char *path)
 		return (NULL);
 	img->img = mlx_xpm_file_to_image(mlx->mlx, path, &img->width, &img->height);
 	if (!img->img)
-		return (free(img), NULL);
+		return (printf("Erreur : mlx_xpm_file_to_image a échoué !\n"),
+			free(img), NULL);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_len,
 			&img->endian);
 	if (!img->addr)
-		return (free(img->img), free(img), NULL);
+		return (printf("Erreur : mlx_get_data_addr a échoué !\n"),
+			mlx_destroy_image(mlx->mlx, img->img), free(img), NULL);
 	return (img);
 }
+
+t_img	*ft_init_new_img(t_mlx *mlx, int width, int height)
+{
+	t_img	*img;
+
+	img = ft_calloc(1, sizeof(t_img));
+	if (!img)
+		return (NULL);
+	img->img = mlx_new_image(mlx->mlx, width, height);
+	if (!img->img)
+		return (printf("Erreur : mlx_xpm_file_to_image a échoué !\n"),
+			free(img), NULL);
+	img->width = width;
+	img->height = height;
+	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_len,
+			&img->endian);
+	if (!img->addr)
+		return (printf("Erreur : mlx_get_data_addr a échoué !\n"),
+			mlx_destroy_image(mlx->mlx, img->img), free(img), NULL);
+	return (img);
+}
+
 
 int	ft_check_textures(t_data *data)
 {
@@ -43,11 +67,14 @@ int	ft_check_textures(t_data *data)
 	data->mlx->img[EA_TEXTURE] = ft_init_img(data->mlx, data->texture_e);
 	if (!data->mlx->img[EA_TEXTURE])
 		return (1);
-	data->mlx->img[4] = ft_init_img(data->mlx, "./textures/paws.xpm");
-	if (!data->mlx->img[4])
+	data->mlx->img[PLAYER] = ft_init_img(data->mlx, "./textures/paws.xpm");
+	if (!data->mlx->img[PLAYER])
 		return (1);
-	data->mlx->img[5] = ft_calloc(1, sizeof(t_img));
-	if (!data->mlx->img[5])
+	data->mlx->img[BACKGROUND] = ft_init_new_img(data->mlx, WIDTH, HEIGHT);
+	if (!data->mlx->img[BACKGROUND])
+		return (1);
+	data->mlx->img[MINI_MAP] = ft_init_new_img(data->mlx, MINI_MAP_SIZE, MINI_MAP_SIZE);
+	if (!data->mlx->img[MINI_MAP])
 		return (1);
 	return (0);
 }

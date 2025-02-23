@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 23:28:49 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/22 18:21:34 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 02:04:12 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,27 +62,29 @@ static void	fill_background(t_data *data)
 
 int	load_background(t_data *data)
 {
-	if (!data->mlx->img[5])
-	{
-		data->mlx->img[5] = malloc(sizeof(t_img));
-		if (!data->mlx->img[5])
-			return (1);
-	}
-	if (!data->mlx->img[5]->img)
-	{
-		data->mlx->img[5]->img = mlx_new_image(data->mlx->mlx, WIDTH, HEIGHT);
-		if (!data->mlx->img[5]->img)
-			return (printf("Erreur : mlx_new_image a échoué !\n"), 1);
-		data->mlx->img[5]->width = WIDTH;
-		data->mlx->img[5]->height = HEIGHT;
-		data->mlx->img[5]->addr = mlx_get_data_addr(
-				data->mlx->img[5]->img,
-				&data->mlx->img[5]->bpp,
-				&data->mlx->img[5]->line_len,
-				&data->mlx->img[5]->endian);
-		if (!data->mlx->img[5]->addr)
-			return (printf("Erreur : mlx_get_data_addr a échoué !\n"), 1);
-	}
+	// if (!data->mlx->img[BACKGROUND])
+	// {
+	// 	data->mlx->img[BACKGROUND] = malloc(sizeof(t_img));
+	// 	if (!data->mlx->img[BACKGROUND])
+	// 		return (1);
+	// }
+	// if (!data->mlx->img[BACKGROUND]->img)
+	// {
+	// 	printf("UECHHH\n\n");
+	// 	data->mlx->img[BACKGROUND]->img = mlx_new_image(data->mlx->mlx, WIDTH, HEIGHT);
+	// 	if (!data->mlx->img[BACKGROUND]->img)
+	// 		return (printf("Erreur : mlx_new_image a échoué !\n"),
+	// 			free(data->mlx->img[BACKGROUND]), 1);
+	// 	data->mlx->img[BACKGROUND]->width = WIDTH;
+	// 	data->mlx->img[BACKGROUND]->height = HEIGHT;
+	// 	data->mlx->img[BACKGROUND]->addr = mlx_get_data_addr(
+	// 			data->mlx->img[BACKGROUND]->img,
+	// 			&data->mlx->img[BACKGROUND]->bpp,
+	// 			&data->mlx->img[BACKGROUND]->line_len,
+	// 			&data->mlx->img[BACKGROUND]->endian);
+	// 	if (!data->mlx->img[BACKGROUND]->addr)
+	// 		return (printf("Erreur : mlx_get_data_addr a échoué !\n"), 1);
+	// }
 	fill_background(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:33:13 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/22 22:56:58 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 03:17:54 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ static int	ft_play(t_data *data)
 {
 	load_background(data);
 	ft_raycasting(data);
+	load_mini_map(data);
 	draw_player_to_image(data);
 	ft_move(data);
 	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
-		data->mlx->img[5]->img, 0, 0);
+		data->mlx->img[BACKGROUND]->img, 0, 0);
+	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, data->mlx->img[MINI_MAP]->img, 10, 10);
 	return (0);
 }
 

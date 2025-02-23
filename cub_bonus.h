@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 22:58:45 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 04:12:42 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define HEIGHT 668 // 768
 # define WIDTH 1024
-# define IMG_COUNT 6
+# define IMG_COUNT 10
 # define PIXEL 48
 # define FOV 0.66
 # define ROT_SPEED 0.02
@@ -39,6 +39,13 @@
 # define SO_TEXTURE 1
 # define WE_TEXTURE 2
 # define EA_TEXTURE 3
+# define PLAYER 4
+# define BACKGROUND 5
+# define MINI_MAP 6
+# define MINI_MAP_SIZE 150
+# define MINI_MAP_RADIUS 50
+# define ZOOM 0.3
+# define TILE_SIZE 10 * ZOOM
 
 typedef struct s_color
 {
@@ -214,6 +221,9 @@ int				ft_move(t_data *data);
 
 void			ft_display_game(t_data *data);
 int				mouse_move(int x,int y, t_data *data);
+
+/*		MINI_MAP			*/
+void			load_mini_map(t_data *data);
 
 
 #endif
