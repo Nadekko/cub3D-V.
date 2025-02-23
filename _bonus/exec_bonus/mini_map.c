@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 20:39:19 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/23 05:55:41 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 06:12:11 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	draw_on_mini_map(t_img *img, int x, int y, int size, int color)
 		j = 0;
 		while (j < size)
 		{
-			if ((x + i) >= 0 && (x + i) < MINI_MAP_SIZE
-				&& (y + j) >= 0 && (y + j) < MINI_MAP_SIZE)
+			if ((x + i) >= 0 && (x + i) < MINISIZE
+				&& (y + j) >= 0 && (y + j) < MINISIZE)
 				put_pixel(img, x + i, y + j, color);
 			j++;
 		}
@@ -38,10 +38,10 @@ void	clear_mini_map(t_img *img)
 	int	y;
 
 	y = 0;
-	while (y < MINI_MAP_SIZE)
+	while (y < MINISIZE)
 	{
 		x = 0;
-		while (x < MINI_MAP_SIZE)
+		while (x < MINISIZE)
 		{
 			put_pixel(img, x, y, 0x000000);
 			x++;
@@ -49,6 +49,9 @@ void	clear_mini_map(t_img *img)
 		y++;
 	}
 }
+
+// const float	zoom = 0.3;
+// const int	tile_size = (int)(10 * zoom);
 
 void	fill_mini_map(t_data *data)
 {
@@ -59,13 +62,13 @@ void	fill_mini_map(t_data *data)
 	float	offset[2];
 
 	clear_mini_map(data->mlx->img[MINI_MAP]);
-	offset[0] = data->player->pos_x - ((MINI_MAP_SIZE / 2.0) / TILE_SIZE);
-	offset[1] = data->player->pos_y - ((MINI_MAP_SIZE / 2.0) / TILE_SIZE);
+	offset[0] = data->player->pos_x - ((MINISIZE / 2.0) / TILE_SIZE);
+	offset[1] = data->player->pos_y - ((MINISIZE / 2.0) / TILE_SIZE);
 	y = -1;
-	while (++y < MINI_MAP_SIZE)
+	while (++y < MINISIZE)
 	{
 		x = -1;
-		while (++x < MINI_MAP_SIZE)
+		while (++x < MINISIZE)
 		{
 			map_x = (int)(offset[0] + (x / (float)TILE_SIZE));
 			map_y = (int)(offset[1] + (y / (float)TILE_SIZE));
@@ -82,8 +85,8 @@ void	fill_mini_map(t_data *data)
 			}
 		}
 	}
-	draw_on_mini_map(data->mlx->img[MINI_MAP], MINI_MAP_SIZE / 2,
-		MINI_MAP_SIZE / 2, 10, 0xFF0000);
+	draw_on_mini_map(data->mlx->img[MINI_MAP], MINISIZE / 2,
+		MINISIZE / 2, 10, 0xFF0000);
 }
 
 void	load_mini_map(t_data *data)

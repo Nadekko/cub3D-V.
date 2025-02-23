@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/23 05:43:17 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 06:12:50 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define IMG_COUNT 10
 # define PIXEL 48
 # define FOV 0.66
+//MOVE
 # define ROT_SPEED 0.02
 # define MOVE_SPEED 0.06
 # define KEY_W 119
@@ -35,6 +36,7 @@
 # define UP 65362
 # define RIGHT 65363
 # define DOWN 65364
+//IMG
 # define NO_TEXTURE 0
 # define SO_TEXTURE 1
 # define WE_TEXTURE 2
@@ -42,8 +44,8 @@
 # define PLAYER 4
 # define BACKGROUND 5
 # define MINI_MAP 6
-# define MINI_MAP_SIZE 150
-# define MINI_MAP_RADIUS 50
+//MINI_MAP
+# define MINISIZE 150
 # define ZOOM 0.3
 # define TILE_SIZE 10 * ZOOM
 
@@ -220,10 +222,9 @@ int				ft_rotate(t_data *data);
 int				ft_move(t_data *data);
 
 void			ft_display_game(t_data *data);
-int				mouse_move(int x,int y, t_data *data);
+int				mouse_move(int x, int y, t_data *data);
 
 /*		MINI_MAP			*/
 void			load_mini_map(t_data *data);
-
 
 #endif

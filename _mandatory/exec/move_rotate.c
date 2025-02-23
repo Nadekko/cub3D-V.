@@ -6,12 +6,11 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:33:26 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/22 22:18:22 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 06:03:22 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub.h"
-
 
 static void	rotate_player(t_data *data, double angle)
 {

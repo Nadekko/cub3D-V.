@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:35:32 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/23 02:44:59 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 05:58:09 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ t_img	*ft_init_new_img(t_mlx *mlx, int width, int height)
 	return (img);
 }
 
-
 int	ft_check_textures(t_data *data)
 {
 	data->mlx->img[NO_TEXTURE] = ft_init_img(data->mlx, data->texture_n);
@@ -73,7 +72,7 @@ int	ft_check_textures(t_data *data)
 	data->mlx->img[BACKGROUND] = ft_init_new_img(data->mlx, WIDTH, HEIGHT);
 	if (!data->mlx->img[BACKGROUND])
 		return (1);
-	data->mlx->img[MINI_MAP] = ft_init_new_img(data->mlx, MINI_MAP_SIZE, MINI_MAP_SIZE);
+	data->mlx->img[MINI_MAP] = ft_init_new_img(data->mlx, MINISIZE, MINISIZE);
 	if (!data->mlx->img[MINI_MAP])
 		return (1);
 	return (0);

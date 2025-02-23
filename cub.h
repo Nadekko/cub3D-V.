@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 22:23:25 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 06:06:11 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 
 # define HEIGHT 668 // 768
 # define WIDTH 1024
-# define IMG_COUNT 6
+# define IMG_COUNT 10
 # define PIXEL 48
 # define FOV 0.66
-# define ROT_SPEED 0.05
-# define MOVE_SPEED 0.05
+//MOVE
+# define ROT_SPEED 0.02
+# define MOVE_SPEED 0.06
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
@@ -35,10 +36,14 @@
 # define UP 65362
 # define RIGHT 65363
 # define DOWN 65364
+//IMG
 # define NO_TEXTURE 0
 # define SO_TEXTURE 1
 # define WE_TEXTURE 2
 # define EA_TEXTURE 3
+# define PLAYER 4
+# define BACKGROUND 5
+# define MINI_MAP 6
 
 typedef struct s_color
 {
@@ -196,9 +201,8 @@ int				ft_get_player_pos(t_data *data);
 int				ft_get_player_dir(t_data *data);
 
 /*		DRAW				*/
-void			draw_wall_to_image(t_data *data, int x, int draw_start,
-					int draw_end);
 void			draw_player_to_image(t_data *data);
+void			put_texture(t_data *data, int i);
 /*		DRAW UTILS			*/
 void			put_pixel(t_img *img, int x, int y, int color);
 void			put_img_to_img(t_data *data, t_img src, int x, int y);
