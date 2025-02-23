@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/23 04:12:42 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 05:43:17 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,9 +203,9 @@ int				ft_get_player_pos(t_data *data);
 int				ft_get_player_dir(t_data *data);
 
 /*		DRAW				*/
-void			draw_wall_to_image(t_data *data, int x, int draw_start,
-					int draw_end);
 void			draw_player_to_image(t_data *data);
+void			put_texture(t_data *data, int i);
+
 /*		DRAW UTILS			*/
 void			put_pixel(t_img *img, int x, int y, int color);
 void			put_img_to_img(t_data *data, t_img src, int x, int y);

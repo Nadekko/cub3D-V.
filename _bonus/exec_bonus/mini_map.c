@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 20:39:19 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/23 04:26:38 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 05:35:37 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	clear_mini_map(t_img *img)
 		y++;
 	}
 }
-
 
 void	fill_mini_map(t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:26:03 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/22 22:57:10 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 05:36:10 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	rotate_player(t_data *data, double angle)
 		+ data->raycast->plane_y * cos(angle);
 }
 
-int	mouse_move(int x,int y, t_data *data)
+int	mouse_move(int x, int y, t_data *data)
 {
 	int		last_x;
-	
+
 	(void)y;
 	last_x = WIDTH / 2;
 	if (x > last_x)
