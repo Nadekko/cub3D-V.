@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 20:39:19 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/23 04:13:40 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/23 04:16:38 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	fill_mini_map(t_data *data)
 				else if (data->map->map_tab[map_y][map_x] == '0' || ft_strchr("NSWE", data->map->map_tab[map_y][map_x]))
 					draw_on_mini_map(data->mlx->img[MINI_MAP], x, y, TILE_SIZE, 0xabb2b9);
 			}
-			x += TILE_SIZE;
+			x++;
 		}
-		y += TILE_SIZE;
+		y++;
 	}
 
 	// Dessiner le joueur au centre de la minimap
