@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/23 06:12:50 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/27 05:38:47 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@
 # define BACKGROUND 5
 # define MINI_MAP 6
 //MINI_MAP
-# define MINISIZE 150
-# define ZOOM 0.3
-# define TILE_SIZE 10 * ZOOM
+# define MINISIZE 200
+# define TILE_SIZE 10
 
 typedef struct s_color
 {
@@ -55,12 +54,6 @@ typedef struct s_color
 	int			green;
 	int			blue;
 }				t_color;
-
-typedef struct s_size
-{
-	int			screen_width;
-	int			screen_height;
-}				t_size;
 
 typedef struct s_map
 {

@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 20:39:19 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/23 06:12:11 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/02/27 05:54:57 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,25 @@ void	clear_mini_map(t_img *img)
 	}
 }
 
-// const float	zoom = 0.3;
-// const int	tile_size = (int)(10 * zoom);
-
 void	fill_mini_map(t_data *data)
 {
 	int		x;
 	int		y;
 	int		map_x;
 	int		map_y;
-	float	offset[2];
+	double	offset[2];
 
 	clear_mini_map(data->mlx->img[MINI_MAP]);
-	offset[0] = data->player->pos_x - ((MINISIZE / 2.0) / TILE_SIZE);
-	offset[1] = data->player->pos_y - ((MINISIZE / 2.0) / TILE_SIZE);
+	offset[0] = data->player->pos_x - ((MINISIZE / 2.0) / 30);
+	offset[1] = data->player->pos_y - ((MINISIZE / 2.0) / 30);
 	y = -1;
 	while (++y < MINISIZE)
 	{
 		x = -1;
 		while (++x < MINISIZE)
 		{
-			map_x = (int)(offset[0] + (x / (float)TILE_SIZE));
-			map_y = (int)(offset[1] + (y / (float)TILE_SIZE));
+			map_x = (int)(offset[0] + (x / (double)30));
+			map_y = (int)(offset[1] + (y / (double)30));
 			if (map_x >= 0 && map_x < data->map->width
 				&& map_y >= 0 && map_y < data->map->height)
 			{
@@ -85,8 +82,7 @@ void	fill_mini_map(t_data *data)
 			}
 		}
 	}
-	draw_on_mini_map(data->mlx->img[MINI_MAP], MINISIZE / 2,
-		MINISIZE / 2, 10, 0xFF0000);
+	draw_on_mini_map(data->mlx->img[MINI_MAP], MINISIZE / 2, MINISIZE / 2, TILE_SIZE, 0xFF0000);
 }
 
 void	load_mini_map(t_data *data)
