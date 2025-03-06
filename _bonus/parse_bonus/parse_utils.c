@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:51:49 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 18:22:20 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:09:30 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int	ft_check_map(char **map)
 		{
 			if (map[i][j] != 32 && map[i][j] != '\t' && map[i][j] != '0'
 				&& map[i][j] != '1' && map[i][j] != 'N' && map[i][j] != 'S'
-				&& map[i][j] != 'E' && map[i][j] != 'W' && map[i][j] != '\n')
+				&& map[i][j] != 'E' && map[i][j] != 'W' && map[i][j] != '\n'
+				&& map[i][j] != 'D' && map[i][j] != 'F')
 				return (0);
 			j++;
 		}
@@ -96,7 +97,7 @@ int	ft_check_line(char *str)
 	{
 		if (str[i] != '1' && str[i] != '\n' && str[i] != 32 && str[i] != '\t'
 			&& str[i] != '0' && str[i] != 'N' && str[i] != 'S' && str[i] != 'W'
-			&& str[i] != 'E')
+			&& str[i] != 'E' && str[i] != 'D' && str[i] != 'F')
 			return (1);
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 23:44:57 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 18:22:37 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:48:33 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,16 @@ int	ft_free_data(t_data *data)
 	if (data->mlx)
 	{
 		if (data->mlx->mlx)
-			ft_free_mlx(data->mlx);
+		{
+			ft_free_img(data->mlx, IMG_COUNT);
+			if (data->mlx->win)
+				mlx_destroy_window(data->mlx->mlx, data->mlx->win);
+			mlx_destroy_display(data->mlx->mlx);
+			free(data->mlx->mlx);
+		}
 		free(data->mlx);
 	}
+	ft_free_elements(data);
 	if (data->player)
 		free(data->player);
 	if (data->raycast)
@@ -80,6 +87,7 @@ int	ft_free_exit(t_data *data)
 		}
 		free(data->mlx);
 	}
+	ft_free_elements(data);
 	if (data->player)
 		free(data->player);
 	if (data->raycast)

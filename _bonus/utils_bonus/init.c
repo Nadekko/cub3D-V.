@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:52:07 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/06 16:07:04 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:10:41 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_clean_init_data(t_data *data)
 	data->mlx = NULL;
 	data->raycast = NULL;
 	data->player = NULL;
+	data->fish = NULL;
+	data->doors = NULL;
 	data->texture_c = NULL;
 	data->texture_f = NULL;
 	data->texture_n = NULL;

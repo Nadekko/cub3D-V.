@@ -36,6 +36,7 @@ SRC_B = _bonus/main_bonus.c \
 		_bonus/parse_bonus/check_textures.c \
 		_bonus/parse_bonus/check_sprites.c \
 		_bonus/utils_bonus/init.c \
+		_bonus/utils_bonus/init_elements.c \
 		_bonus/utils_bonus/free.c \
 		_bonus/utils_bonus/free_utils.c \
 		_bonus/utils_bonus/utils.c \
