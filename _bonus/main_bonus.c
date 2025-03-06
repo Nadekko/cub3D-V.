@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:41:31 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/22 20:27:28 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:16:55 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ static int	ft_init_matrix(t_data *data)
 	ft_clean_init_player(data);
 	ft_clean_init_raycast(data);
 	ft_clean_init_move(data);
-	if (ft_get_player_pos(data))
-		return (ft_free_data(data), ft_putendl_fd("Error no player position",
+	if (ft_get_player_pos(data) || ft_clean_init_elements(data))
+		return (ft_free_data(data),
+			ft_putendl_fd("Error no player position or error initializing elements",
 				2), 1);
 	ft_display_game(data);
 	ft_free_data(data);
@@ -38,8 +39,7 @@ static int	ft_data_start(t_data *data, char **file)
 			ft_putendl_fd("Error initalizing mlx failed", 2), 1);
 	if (ft_check_textures(data) || ft_check_rgb(data))
 		return (ft_free_data(data), ft_free_tab(file),
-			ft_putendl_fd("Error invalid textures / image files", 2),
-			1);
+			ft_putendl_fd("Error invalid textures / image files", 2), 1);
 	else if (ft_check_map_closed(data->map->map_tab)
 		|| ft_check_player(data->map->map_tab))
 		return (ft_free_data(data), ft_free_tab(file),

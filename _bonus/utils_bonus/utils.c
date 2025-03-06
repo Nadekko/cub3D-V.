@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:05:54 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 18:22:50 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:13:14 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,26 @@ char	*ft_join_to_comb_empty(char *line, size_t longest_line)
 	ret[i++] = '\n';
 	ret[i] = '\0';
 	return (ret);
+}
+
+int	ft_counter(char **map, char element)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == element)
+				count++;
+			j++;
+		}
+		i++;
+	}
+	return (count);
 }

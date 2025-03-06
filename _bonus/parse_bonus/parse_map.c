@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:13:37 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 18:22:17 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:11:34 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_condition_map(char **map, int i, int j)
 {
 	if (map[i][j] && (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'N'
-			&& map[i][j] != 'S' && map[i][j] != 'E' && map[i][j] != 'W'))
+			&& map[i][j] != 'S' && map[i][j] != 'E' && map[i][j] != 'W' && map[i][j] != 'D' && map[i][j] != 'F'))
 		return (1);
 	return (0);
 }

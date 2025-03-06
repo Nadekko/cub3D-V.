@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/27 05:38:47 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:44:31 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 # define HEIGHT 668 // 768
 # define WIDTH 1024
-# define IMG_COUNT 10
+# define IMG_COUNT 7
 # define PIXEL 48
 # define FOV 0.66
-//MOVE
+// MOVE
 # define ROT_SPEED 0.02
 # define MOVE_SPEED 0.06
 # define KEY_W 119
@@ -36,7 +36,7 @@
 # define UP 65362
 # define RIGHT 65363
 # define DOWN 65364
-//IMG
+// IMG
 # define NO_TEXTURE 0
 # define SO_TEXTURE 1
 # define WE_TEXTURE 2
@@ -44,7 +44,7 @@
 # define PLAYER 4
 # define BACKGROUND 5
 # define MINI_MAP 6
-//MINI_MAP
+// MINI_MAP
 # define MINISIZE 200
 # define TILE_SIZE 10
 
@@ -81,6 +81,22 @@ typedef struct s_player
 	double		next_y;
 	double		next_x;
 }				t_player;
+
+typedef struct s_fish
+{
+	int			x;
+	int			y;
+	int			is_collected;
+	int			nb;
+}				t_fish;
+
+typedef struct s_doors
+{
+	int			x;
+	int			y;
+	int			is_open;
+	int			nb;
+}				t_doors;
 
 typedef struct s_mlx
 {
@@ -135,6 +151,8 @@ typedef struct s_data
 	t_mlx		*mlx;
 	t_player	*player;
 	t_raycast	*raycast;
+	t_fish		*fish;
+	t_doors		*doors;
 	t_move		move;
 	t_color		*texture_f;
 	t_color		*texture_c;
@@ -169,6 +187,7 @@ int				ft_clean_init_raycast(t_data *data);
 void			ft_clean_init_move(t_data *data);
 int				mlx_start(t_data *data);
 int				mlx_window_init(t_data *data);
+int				ft_clean_init_elements(t_data *data);
 // int				ft_clean_init_mlx(t_data *data);
 
 /*		UTILS		*/
@@ -176,12 +195,14 @@ size_t			ft_longest_line(char **map);
 int				**ft_convert_map(char **map);
 char			*ft_get_textures_path(char *path, char *entry);
 char			*ft_join_to_comb_empty(char *line, size_t longest_line);
+int				ft_counter(char **map, char element);
 
 /*		FREE		*/
 int				ft_free_img(t_mlx *mlx, int n);
 int				ft_free_data(t_data *data);
 int				ft_free_exit(t_data *data);
 void			ft_free_mlx(t_mlx *mlx);
+void			ft_free_elements(t_data *data);
 
 /*		CHECK_TEXTURES		*/
 int				ft_check_textures(t_data *data);

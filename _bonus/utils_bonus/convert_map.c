@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:05:02 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 18:22:31 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:14:20 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ static int	ft_convert_line(char *line, int **tab, int i)
 		if (line[j] == 'N' || line[j] == 'S' || line[j] == 'E'
 			|| line[j] == 'W')
 			tab[i][j] = 3;
+		else if (line[j] == 'D')
+			tab[i][j] = 4;
+		else if (line[j] == 'F')
+			tab[i][j] = 5;
 		else if (ft_is_whitespaces(line[j]) != 1)
 			tab[i][j] = ft_atoi_char(line[j]);
 		else
