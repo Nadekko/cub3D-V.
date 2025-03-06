@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:35:32 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/23 05:58:09 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:28:54 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_check_textures(t_data *data)
 	data->mlx->img[EA_TEXTURE] = ft_init_img(data->mlx, data->texture_e);
 	if (!data->mlx->img[EA_TEXTURE])
 		return (1);
-	data->mlx->img[PLAYER] = ft_init_img(data->mlx, "./textures/paws.xpm");
+	data->mlx->img[PLAYER] = ft_init_img(data->mlx, "./textures/paw/paw_01.xpm");
 	if (!data->mlx->img[PLAYER])
 		return (1);
 	data->mlx->img[BACKGROUND] = ft_init_new_img(data->mlx, WIDTH, HEIGHT);

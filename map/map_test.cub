@@ -1,5 +1,5 @@
-NO ./textures/1_48.xpm
-SO ./textures/2_48.xpm
+NO ./textures/wall_01.xpm
+SO ./textures/wall_02.xpm
 WE ./textures/3_48.xpm
 EA ./textures/4_48.xpm
 
