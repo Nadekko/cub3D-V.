@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 23:28:49 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/23 05:40:43 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:55:28 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	draw_celing(t_data *data)
 		y = 0;
 		while (y < HEIGHT / 2)
 		{
-			put_pixel(data->mlx->img[5], x, y, color);
+			put_pixel(data->mlx->img[BACKGROUND], x, y, color);
 			y++;
 		}
 		x++;
@@ -47,7 +47,7 @@ static void	draw_floor(t_data *data)
 		y = HEIGHT / 2;
 		while (y < HEIGHT)
 		{
-			put_pixel(data->mlx->img[5], x, y, color);
+			put_pixel(data->mlx->img[BACKGROUND], x, y, color);
 			y++;
 		}
 		x++;

@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:52:07 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 18:22:46 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:07:04 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	ft_clean_init_data(t_data *data)
 	data->texture_s = NULL;
 	data->texture_w = NULL;
 	data->texture_e = NULL;
+	data->anim_frame = 0;
+	data->anim_running = 0;
 	return (0);
 }
 

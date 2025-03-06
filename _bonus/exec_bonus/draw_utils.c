@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 22:08:58 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/22 18:21:40 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:53:37 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	put_img_to_img(t_data *data, t_img src, int x, int y)
 		while (j < src.height)
 		{
 			if (get_pixel(src, i, j) != 0xFF000000)
-				put_pixel(data->mlx->img[5], (x + i), (y + j),
+				put_pixel(data->mlx->img[BACKGROUND], (x + i), (y + j),
 					get_pixel(src, i, j));
 			j++;
 		}
@@ -56,6 +56,10 @@ void	put_img_to_img(t_data *data, t_img src, int x, int y)
 	}
 }
 
+int	rgb_to_int(int r, int g, int b)
+{
+	return (r << 16 | g << 8 | b);
+}
 /*
 0x000000 = 24_BITS
 0xRRGGBB = 24_BITS
@@ -74,8 +78,3 @@ green = 0
 blue = 113
 color = (240 * 65536) + (0 * 256) + 113 = 15790361 // hex = 0xF00071;
 */
-
-int	rgb_to_int(int r, int g, int b)
-{
-	return (r << 16 | g << 8 | b);
-}

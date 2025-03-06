@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/27 05:38:47 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:10:55 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define HEIGHT 668 // 768
 # define WIDTH 1024
-# define IMG_COUNT 10
+# define IMG_COUNT 16
 # define PIXEL 48
 # define FOV 0.66
 //MOVE
@@ -41,9 +41,9 @@
 # define SO_TEXTURE 1
 # define WE_TEXTURE 2
 # define EA_TEXTURE 3
-# define PLAYER 4
-# define BACKGROUND 5
-# define MINI_MAP 6
+# define BACKGROUND 4
+# define MINI_MAP 5
+# define PLAYER 6
 //MINI_MAP
 # define MINISIZE 200
 # define TILE_SIZE 10
@@ -138,6 +138,8 @@ typedef struct s_data
 	t_move		move;
 	t_color		*texture_f;
 	t_color		*texture_c;
+	int			anim_frame;
+	int			anim_running;
 	char		*texture_n;
 	char		*texture_s;
 	char		*texture_e;
@@ -169,7 +171,6 @@ int				ft_clean_init_raycast(t_data *data);
 void			ft_clean_init_move(t_data *data);
 int				mlx_start(t_data *data);
 int				mlx_window_init(t_data *data);
-// int				ft_clean_init_mlx(t_data *data);
 
 /*		UTILS		*/
 size_t			ft_longest_line(char **map);
@@ -187,6 +188,7 @@ void			ft_free_mlx(t_mlx *mlx);
 int				ft_check_textures(t_data *data);
 int				ft_check_rgb(t_data *data);
 t_img			*ft_init_img(t_mlx *mlx, char *path);
+t_img	*ft_init_new_img(t_mlx *mlx, int width, int height);
 
 /*		CONVERT_MAP			*/
 int				**ft_convert_map(char **map);
@@ -219,5 +221,8 @@ int				mouse_move(int x, int y, t_data *data);
 
 /*		MINI_MAP			*/
 void			load_mini_map(t_data *data);
+
+int animation_paws(t_data *data);
+int	mouse_press(int button, int x, int y, t_data *data);
 
 #endif

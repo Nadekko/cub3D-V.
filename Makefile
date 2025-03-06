@@ -34,6 +34,7 @@ SRC_B = _bonus/main_bonus.c \
 		_bonus/parse_bonus/parse_utils2.c \
 		_bonus/parse_bonus/parse_map.c \
 		_bonus/parse_bonus/check_textures.c \
+		_bonus/parse_bonus/check_sprites.c \
 		_bonus/utils_bonus/init.c \
 		_bonus/utils_bonus/free.c \
 		_bonus/utils_bonus/free_utils.c \
@@ -48,6 +49,7 @@ SRC_B = _bonus/main_bonus.c \
 		_bonus/exec_bonus/move_rotate.c \
 		_bonus/exec_bonus/raycasting.c \
 		_bonus/exec_bonus/raycasting_init.c \
+		_bonus/exec_bonus/sprites.c \
 
 HEADER = cub.h
 
