@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/06 17:12:55 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:03:07 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define HEIGHT 668 // 768
 # define WIDTH 1024
-# define IMG_COUNT 16
+# define IMG_COUNT 21
 # define PIXEL 48
 # define FOV 0.66
 // MOVE
@@ -43,6 +43,7 @@
 # define EA_TEXTURE 3
 # define BACKGROUND 4
 # define MINI_MAP 5
+# define DOOR 16
 # define PLAYER 6
 //MINI_MAP
 # define MINISIZE 200
@@ -84,16 +85,16 @@ typedef struct s_player
 
 typedef struct s_fish
 {
-	int			x;
-	int			y;
+	double			x;
+	double			y;
 	int			is_collected;
 	int			nb;
 }				t_fish;
 
 typedef struct s_doors
 {
-	int			x;
-	int			y;
+	double			x;
+	double			y;
 	int			is_open;
 	int			nb;
 }				t_doors;
@@ -245,6 +246,7 @@ int				mouse_move(int x, int y, t_data *data);
 void			load_mini_map(t_data *data);
 
 int animation_paws(t_data *data);
+int	animation_doors(t_data *data);
 int	mouse_press(int button, int x, int y, t_data *data);
 
 #endif

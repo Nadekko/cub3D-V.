@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 22:10:59 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/06 14:28:19 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:10:59 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,29 @@ void	draw_player_to_image(t_data *data)
 
 static void	set_texture(t_data *data)
 {
-	if (data->raycast->side == 0)
+	if (data->map->map_int[data->raycast->map_y][data->raycast->map_x] == 4)
 	{
-		if (data->raycast->ray_x > 0)
-			data->raycast->texture = NO_TEXTURE;
-		else
-			data->raycast->texture = SO_TEXTURE;
+		if (data->doors->is_open == 0)
+			data->raycast->texture = DOOR;
+		else if (data->doors->is_open == 1)
+			printf("door should be open\n");
 	}
 	else
 	{
-		if (data->raycast->ray_y > 0)
-			data->raycast->texture = EA_TEXTURE;
+		if (data->raycast->side == 0)
+		{
+			if (data->raycast->ray_x > 0)
+				data->raycast->texture = NO_TEXTURE;
+			else
+				data->raycast->texture = SO_TEXTURE;
+		}
 		else
-			data->raycast->texture = WE_TEXTURE;
+		{
+			if (data->raycast->ray_y > 0)
+				data->raycast->texture = EA_TEXTURE;
+			else
+				data->raycast->texture = WE_TEXTURE;
+		}
 	}
 	if (data->raycast->side == 0)
 		data->raycast->wall_x = data->player->pos_y + data->raycast->wall_dist

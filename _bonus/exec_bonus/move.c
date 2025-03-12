@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:04:59 by andjenna          #+#    #+#             */
-/*   Updated: 2025/02/22 23:00:50 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:28:46 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ static int	is_valid_move(double new_x, double new_y, t_data *data)
 	if (data->map->map_int[map_y][map_x] == 1 ||
 		data->map->map_int[(int)(new_y + 0.1)][map_x] == 1 ||
 		data->map->map_int[map_y][(int)(new_x + 0.1)] == 1)
+		return (0);
+	else if ((data->map->map_int[map_y][map_x] == 4 ||
+		data->map->map_int[(int)(new_y + 0.1)][map_x] == 4 ||
+		data->map->map_int[map_y][(int)(new_x + 0.1)] == 4) && data->doors->is_open == 0)
 		return (0);
 	return (1);
 }

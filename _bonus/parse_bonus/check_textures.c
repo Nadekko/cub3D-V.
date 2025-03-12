@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:35:32 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/06 17:13:36 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:04:40 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,42 +67,3 @@ int	ft_check_rgb(t_data *data)
 		return (1);
 	return (0);
 }
-
-// int	ft_check_rgb_values(char *texture)
-// {
-// 	char	**tab;
-// 	int		i;
-
-// 	tab = ft_split(texture, ',');
-// 	if (ft_tab_len(tab) > 3 || ft_tab_len(tab) < 3)
-// 		return (ft_free_tab(tab), 1);
-// 	i = 0;
-// 	while (tab[i])
-// 	{
-// 		if (ft_atoi(tab[i]) < 0 || ft_atoi(tab[i]) > 255)
-// 			return (ft_free_tab(tab), 1);
-// 		i++;
-// 	}
-// 	ft_free_tab(tab);
-// 	return (0);
-// }
-
-// int	ft_check_rgb(t_data *data)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (data->texture_c[i])
-// 	{
-// 		if ((data->texture_c[i] != ','
-// 				&& !ft_isdigit(data->texture_c[i]))
-// 			|| (data->texture_f[i] != ','
-// 				&& !ft_isdigit(data->texture_f[i])))
-// 			return (1);
-// 		i++;
-// 	}
-// 	if (ft_check_rgb_values(data->texture_c)
-// 		|| ft_check_rgb_values(data->texture_f))
-// 		return (1);
-// 	return (0);
-// }

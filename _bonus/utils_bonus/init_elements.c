@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_elements.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:32:00 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/06 16:49:28 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:07:47 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	ft_get_doors(t_data *data, int nb)
 				data->doors[i].x = k;
 				data->doors[i].y = j;
 				data->doors[i].is_open = 0;
+				printf("door[%d] _x = %f, _y = %f\n", i, data->doors[i].x, data->doors[i].y);
 				i++;
 			}
 		}
