@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/12 18:03:07 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:19:58 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,7 +246,7 @@ int				mouse_move(int x, int y, t_data *data);
 void			load_mini_map(t_data *data);
 
 int animation_paws(t_data *data);
-int	animation_doors(t_data *data);
+int	animation_doors(t_data *data, int x, int y);
 int	mouse_press(int button, int x, int y, t_data *data);
 
 #endif

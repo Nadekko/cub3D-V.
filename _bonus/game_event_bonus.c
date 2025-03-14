@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:33:13 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/12 18:11:14 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:04:21 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	ft_play(t_data *data)
 	load_mini_map(data);
 	draw_player_to_image(data);
 	animation_paws(data);
-	animation_doors(data);
 	ft_move(data);
 	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
 		data->mlx->img[BACKGROUND]->img, 0, 0);

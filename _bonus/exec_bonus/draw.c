@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 22:10:59 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/12 18:10:59 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:14:03 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ static void	set_texture(t_data *data)
 	{
 		if (data->doors->is_open == 0)
 			data->raycast->texture = DOOR;
-		else if (data->doors->is_open == 1)
-			printf("door should be open\n");
 	}
 	else
 	{

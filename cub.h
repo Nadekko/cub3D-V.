@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/23 06:06:11 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:59:17 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define HEIGHT 668 // 768
 # define WIDTH 1024
-# define IMG_COUNT 10
+# define IMG_COUNT 6
 # define PIXEL 48
 # define FOV 0.66
 //MOVE

@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:32:00 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/12 18:07:47 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:48:22 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	ft_get_fish(t_data *data, int nb)
 				data->fish[i].x = k;
 				data->fish[i].y = j;
 				data->fish[i].is_collected = 0;
+				data->fish[i].nb = ft_counter(data->map->map_tab, 'F');
 				i++;
 			}
 		}
@@ -65,6 +66,7 @@ int	ft_get_doors(t_data *data, int nb)
 				data->doors[i].x = k;
 				data->doors[i].y = j;
 				data->doors[i].is_open = 0;
+				data->doors[i].nb = ft_counter(data->map->map_tab, 'D');
 				printf("door[%d] _x = %f, _y = %f\n", i, data->doors[i].x, data->doors[i].y);
 				i++;
 			}
