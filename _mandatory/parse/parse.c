@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:06 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 18:14:39 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:07:16 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,31 +84,31 @@ int	ft_set_textures_struct(t_data *data, char *file, char zone)
 
 int	ft_get_textures(char **file, t_data *data, int i, int j)
 {
-	if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'N'
-		&& data->texture_n == NULL)
+	if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'N')
+	{
+		if (ft_check_existance(data->texture_n))
+			return (1);
 		data->texture_n = ft_get_textures_path(file[i], "NO");
-	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'S'
-		&& data->texture_s == NULL)
+	}
+	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'S')
+	{
+		if (ft_check_existance(data->texture_s))
+			return (1);
 		data->texture_s = ft_get_textures_path(file[i], "SO");
-	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'W'
-		&& data->texture_w == NULL)
+	}
+	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'W')
+	{
+		if (ft_check_existance(data->texture_w))
+			return (1);
 		data->texture_w = ft_get_textures_path(file[i], "WE");
-	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'E'
-		&& data->texture_e == NULL)
+	}
+	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'E')
+	{
+		if (ft_check_existance(data->texture_e))
+			return (1);
 		data->texture_e = ft_get_textures_path(file[i], "EA");
-	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'F'
-		&& data->texture_f == NULL)
-	{
-		if (ft_set_textures_struct(data, file[i], 'F'))
-			return (1);
 	}
-	else if (!ft_is_whitespaces(file[i][j]) && file[i][j] == 'C'
-		&& data->texture_c == NULL)
-	{
-		if (ft_set_textures_struct(data, file[i], 'C'))
-			return (1);
-	}
-	return (0);
+	return (ft_get_textures_part2(file, data, i, j));
 }
 
 void	ft_skip_whitespaces(char **file, int *i, int *j)

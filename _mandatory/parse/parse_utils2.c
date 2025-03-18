@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:55:56 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/02/22 18:15:05 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:46:50 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,13 @@ int	ft_check_map_extension(char *file)
 {
 	if (ft_strncmp(file + ft_strlen(file) - 4, ".cub", 4)
 		|| !ft_check_one_extension(file))
+		return (0);
+	return (1);
+}
+
+int	ft_check_existance(char *texture)
+{
+	if (!texture)
 		return (0);
 	return (1);
 }

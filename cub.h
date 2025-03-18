@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/14 17:59:17 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:07:00 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define IMG_COUNT 6
 # define PIXEL 48
 # define FOV 0.66
-//MOVE
+// MOVE
 # define ROT_SPEED 0.02
 # define MOVE_SPEED 0.06
 # define KEY_W 119
@@ -36,7 +36,7 @@
 # define UP 65362
 # define RIGHT 65363
 # define DOWN 65364
-//IMG
+// IMG
 # define NO_TEXTURE 0
 # define SO_TEXTURE 1
 # define WE_TEXTURE 2
@@ -150,6 +150,7 @@ typedef struct s_data
 
 /*		PARSE				*/
 char			**ft_read_map(char *map);
+int				ft_check_existance(char *texture);
 int				ft_check_map(char **map);
 int				ft_get_data(t_data *data, char **file);
 int				ft_check_map_extension(char *file);
@@ -159,6 +160,8 @@ int				ft_check_data(t_data *data);
 int				ft_check_one_extension(char *map);
 void			ft_skip_whitespaces(char **file, int *i, int *j);
 int				ft_get_textures(char **file, t_data *data, int i, int j);
+int				ft_get_textures_part2(char **file, t_data *data, int i, int j);
+int				ft_set_textures_struct(t_data *data, char *file, char zone);
 
 /*		PARSE_MAP*/
 int				ft_check_map_closed(char **map);

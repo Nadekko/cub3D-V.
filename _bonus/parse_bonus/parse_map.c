@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:13:37 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/06 14:11:34 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:32:05 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_check_char(char **map, int i, int j)
 		return (1);
 	else if ((j - 1 >= 0 && ft_condition_map(map, i, j - 1)) || j - 1 < 0)
 		return (1);
-	else if (ft_condition_map(map, i + 1, j) || !map[i + 1][j])
+	else if (map[i + 1] && (ft_condition_map(map, i + 1, j) || !map[i + 1][j]))
 		return (1);
 	else if (ft_condition_map(map, i, j + 1) || !map[i][j + 1])
 		return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprites.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:41:48 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/14 17:28:47 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:51:39 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,22 @@ int	animation_doors(t_data *data, int x, int y)
 {
 	int		i;
 
-	i = 0;
 	
+	i = 0;
+	// while (data->doors[i].x != x || data->doors[i].y != y)
+	// 	i++;
+	if (!data->anim_running)
+	return (0);
+	if (data->anim_frame > 9)
+	{
+		data->anim_running = 0;
+		data->anim_frame = 0;
+		return (0);
+	}
+	load_background(data);
+	ft_raycasting(data);
+	put_img_to_img(data, *data->mlx->img[DOOR + data->anim_frame], x, y);
+	data->anim_frame++;
 	return (0);
 }
 

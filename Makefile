@@ -11,6 +11,7 @@ SRC = _mandatory/main.c \
 	_mandatory/parse/parse.c \
 	_mandatory/parse/parse_utils.c \
 	_mandatory/parse/parse_utils2.c \
+	_mandatory/parse/parse_utils3.c \
 	_mandatory/parse/parse_map.c \
 	_mandatory/parse/check_textures.c \
 	_mandatory/utils/init.c \
@@ -32,6 +33,7 @@ SRC_B = _bonus/main_bonus.c \
 		_bonus/parse_bonus/parse.c \
 		_bonus/parse_bonus/parse_utils.c \
 		_bonus/parse_bonus/parse_utils2.c \
+		_bonus/parse_bonus/parse_utils3.c \
 		_bonus/parse_bonus/parse_map.c \
 		_bonus/parse_bonus/check_textures.c \
 		_bonus/parse_bonus/check_sprites.c \
@@ -81,7 +83,7 @@ $(NAME): $(OBJ) $(HEADER) $(LIBFT) $(MiniLibX_exec)
 			|   	[OK] $(NAME) created   	   |\n \
 			*----------------------------------*$(NC)"
 
-bonus: $(MiniLibX_exec) $(OBJ_B) $(HEADER_B) $(LIBFT) 
+bonus: $(MiniLibX_exec) $(OBJ_B) $(HEADER_B) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME_B) $(OBJ_B) $(LIBFT) $(MiniLibX_exec) -lXext -lX11 -lm
 	@echo "$(GREEN)		*----------------------------------*\n \
 			|   	[OK] $(NAME_B) created   	   |\n \

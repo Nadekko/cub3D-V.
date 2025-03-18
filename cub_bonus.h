@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/14 17:19:58 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:10:39 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define MINI_MAP 5
 # define DOOR 16
 # define PLAYER 6
-//MINI_MAP
+// MINI_MAP
 # define MINISIZE 200
 # define TILE_SIZE 10
 
@@ -85,16 +85,16 @@ typedef struct s_player
 
 typedef struct s_fish
 {
-	double			x;
-	double			y;
+	double		x;
+	double		y;
 	int			is_collected;
 	int			nb;
 }				t_fish;
 
 typedef struct s_doors
 {
-	double			x;
-	double			y;
+	double		x;
+	double		y;
 	int			is_open;
 	int			nb;
 }				t_doors;
@@ -168,6 +168,7 @@ typedef struct s_data
 
 /*		PARSE				*/
 char			**ft_read_map(char *map);
+int				ft_check_existance(char *texture);
 int				ft_check_map(char **map);
 int				ft_get_data(t_data *data, char **file);
 int				ft_check_map_extension(char *file);
@@ -177,6 +178,8 @@ int				ft_check_data(t_data *data);
 int				ft_check_one_extension(char *map);
 void			ft_skip_whitespaces(char **file, int *i, int *j);
 int				ft_get_textures(char **file, t_data *data, int i, int j);
+int				ft_set_textures_struct(t_data *data, char *file, char zone);
+int				ft_get_textures_part2(char **file, t_data *data, int i, int j);
 
 /*		PARSE_MAP*/
 int				ft_check_map_closed(char **map);
@@ -211,7 +214,7 @@ void			ft_free_elements(t_data *data);
 int				ft_check_textures(t_data *data);
 int				ft_check_rgb(t_data *data);
 t_img			*ft_init_img(t_mlx *mlx, char *path);
-t_img	*ft_init_new_img(t_mlx *mlx, int width, int height);
+t_img			*ft_init_new_img(t_mlx *mlx, int width, int height);
 
 /*		CONVERT_MAP			*/
 int				**ft_convert_map(char **map);
@@ -245,8 +248,8 @@ int				mouse_move(int x, int y, t_data *data);
 /*		MINI_MAP			*/
 void			load_mini_map(t_data *data);
 
-int animation_paws(t_data *data);
-int	animation_doors(t_data *data, int x, int y);
-int	mouse_press(int button, int x, int y, t_data *data);
+int				animation_paws(t_data *data);
+int				animation_doors(t_data *data, int x, int y);
+int				mouse_press(int button, int x, int y, t_data *data);
 
 #endif
