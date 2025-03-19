@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:38:31 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/14 17:16:34 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:25:23 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ static void	algo_dda(t_data *data)
 		if (data->map->map_int[data->raycast->map_y][data->raycast->map_x] == 1
 				|| data->map->map_int[data->raycast->map_y][data->raycast->map_x] == 4)
 			hit = 1;
-		else if (data->map->map_int[data->raycast->map_y][data->raycast->map_x] == 5)
-		{
-			animation_doors(data, data->raycast->map_x, data->raycast->map_y);
-		}
 	}
 }
 
