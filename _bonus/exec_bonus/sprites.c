@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:41:48 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/20 12:35:11 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:55:54 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,29 @@ int animation_paws(t_data *data)
 	put_img_to_img(data, *data->mlx->img[PLAYER + data->anim_frame], 0, 0);
 	data->anim_frame++;
 	usleep(10000);
+	return (0);
+}
+
+int	animation_doors(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (i < data->doors->nb)
+	{
+		if (data->doors[i].is_open && data->doors[i].anim_frame >= 4)
+		{
+			data->doors[i].is_open = 0;
+			data->doors[i].anim_frame = 0;
+			return (0);
+		}
+		else if (data->doors[i].is_open && data->doors[i].anim_frame <= 4)
+		{
+			data->doors[i].anim_frame++;
+			usleep(10000);
+		}
+		i++;
+	}
 	return (0);
 }
 

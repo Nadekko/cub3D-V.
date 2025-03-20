@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:38:31 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/20 14:37:03 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:54:32 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ void draw_sprites(t_data *data, t_img *img, int x, int door_height)
 	int y_start;
 	int y_end;
 	int tex_y;
-	int color;
+	unsigned int color;
+	int i;
+	int y;
 
 	y_start = HEIGHT / 2 - door_height / 2;
 	if (y_start < 0)
@@ -85,14 +87,19 @@ void draw_sprites(t_data *data, t_img *img, int x, int door_height)
 	y_end = HEIGHT / 2 + door_height / 2;
 	if (y_end >= HEIGHT)
 		y_end = HEIGHT - 1;
-	int y = y_start;
-	while (y < y_end)
+	i = 0;
+	while (i < x)
 	{
-		tex_y = (y - y_start) * PIXEL / door_height;
-		color = get_pixel(*img, PIXEL / 2, tex_y);
-		if (color != 0)
-			put_pixel(data->mlx->img[BACKGROUND], x, y_start, color);
-		y++;
+		y = y_start;
+		while (y < y_end)
+		{
+			tex_y = (y - y_start) * PIXEL / door_height;
+			color = get_pixel(*img, x + i, tex_y);
+			if (color != 0xFF000000)
+				put_pixel(data->mlx->img[BACKGROUND], x + i, y, color);
+			y++;
+		}
+		i++;
 	}
 }
 void draw_doors(t_data *data)
@@ -103,18 +110,19 @@ void draw_doors(t_data *data)
 	// int y;
 
 	i = 0;
-	x = 0;
+	// x = 0;
 	// y = 0;
-	door_height = 0;
+	// door_height = 0;
 	while (i < data->doors->nb)
 	{
 		if (data->doors[i].is_open)
 		{
-			door_height = (int)(HEIGHT / data->doors[i].dist_to_player);
+			door_height = (int)((HEIGHT / data->doors[i].dist_to_player));
 			x = (int)(data->doors[i].x * TILE_SIZE);
 			// y = (int)(data->doors[i].y * TILE_SIZE);
-			if (data->doors[i].anim_frame <= 1)
+			if (data->doors[i].anim_frame >= 1 && data->doors[i].anim_frame <= 4)
 				draw_sprites(data, data->mlx->img[DOOR + data->doors[i].anim_frame], x, door_height);
+				// put_img_to_img(data, *data->mlx->img[DOOR + data->doors[i].anim_frame], x, door_height);
 		}
 		i++;
 	}
