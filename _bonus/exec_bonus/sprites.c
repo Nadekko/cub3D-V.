@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:41:48 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/19 17:13:52 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:35:11 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,32 +31,6 @@ int animation_paws(t_data *data)
 	return (0);
 }
 
-int	animation_doors(t_data *data, int x, int y)
-{
-	int		i;
-
-	
-	i = 0;
-	(void)x;
-	(void)y;
-	(void)data;
-	// while (data->doors[i].x != x || data->doors[i].y != y)
-	// 	i++;
-	// if (!data->anim_running)
-	// return (0);
-	// if (data->anim_frame > 9)
-	// {
-	// 	data->anim_running = 0;
-	// 	data->anim_frame = 0;
-	// 	return (0);
-	// }
-	// load_background(data);
-	// ft_raycasting(data);
-	// put_img_to_img(data, *data->mlx->img[DOOR + data->anim_frame], x, y);
-	// data->anim_frame++;
-	return (0);
-}
-
 int	is_near_player(t_data *data)
 {
 	int		nb_doors;
@@ -77,8 +51,8 @@ int	is_near_player(t_data *data)
 		dist = sqrt(dist_x * dist_x + dist_y * dist_y);
 		if (dist <= 1.5 && (dist_x * data->raycast->dir_x + dist_y * data->raycast->dir_y > 0))
 		{
-			printf("door is near\n");
 			data->doors[i].is_open = 1;
+			data->doors[i].anim_frame = 1;
 			data->map->map_int[(int)data->doors[i].y][(int)data->doors[i].x] = 5;
 			return (1);
 		}
@@ -92,11 +66,6 @@ int	mouse_press(int button, int x, int y, t_data *data)
 	(void)x;
 	(void)y;
 	if (button == 1)
-	{
-		data->anim_frame = 1;
-		data->anim_running = 1;
-	}
-	if (button == 3)
 	{
 		is_near_player(data);
 		data->anim_frame = 1;
