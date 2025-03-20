@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:24:27 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/18 17:07:47 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:43:25 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub.h"
-
 
 int ft_get_textures_part2(char **file, t_data *data, int i, int j)
 {

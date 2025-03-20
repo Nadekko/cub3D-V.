@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/18 17:10:39 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/03/19 19:51:47 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_fish
 	double		y;
 	int			is_collected;
 	int			nb;
+	int			anim_frame;
 }				t_fish;
 
 typedef struct s_doors
@@ -97,6 +98,8 @@ typedef struct s_doors
 	double		y;
 	int			is_open;
 	int			nb;
+	int			anim_frame;
+	double		dist_to_player;
 }				t_doors;
 
 typedef struct s_mlx
