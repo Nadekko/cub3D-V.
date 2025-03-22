@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:59:17 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/20 14:58:29 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/03/22 20:01:06 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_doors
 	double		x;
 	double		y;
 	int			is_open;
+	int			has_been_open;
 	int			nb;
 	int			anim_frame;
 	double		dist_to_player;

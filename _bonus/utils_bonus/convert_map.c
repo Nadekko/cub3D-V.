@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:05:02 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/06 14:14:20 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/03/22 19:54:48 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_convert_line(char *line, int **tab, int i)
 		else if (line[j] == 'D')
 			tab[i][j] = 4;
 		else if (line[j] == 'F')
-			tab[i][j] = 5;
+			tab[i][j] = 7;
 		else if (ft_is_whitespaces(line[j]) != 1)
 			tab[i][j] = ft_atoi_char(line[j]);
 		else

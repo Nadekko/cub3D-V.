@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_elements.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:32:00 by ede-cola          #+#    #+#             */
-/*   Updated: 2025/03/19 19:52:21 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/22 20:02:51 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	ft_get_doors(t_data *data, int nb)
 				data->doors[i].x = k;
 				data->doors[i].y = j;
 				data->doors[i].is_open = 0;
+				data->doors[i].has_been_open = 0;
 				data->doors[i].nb = ft_counter(data->map->map_tab, 'D');
 				data->doors[i].anim_frame = 0;
 				data->doors[i].dist_to_player = 0;
