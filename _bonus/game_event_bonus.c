@@ -14,7 +14,6 @@
 
 static int	ft_play(t_data *data)
 {
-	animation_doors(data);
 	load_background(data);
 	ft_raycasting(data);
 	load_mini_map(data);

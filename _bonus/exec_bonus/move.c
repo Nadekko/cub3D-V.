@@ -42,22 +42,19 @@ int	key_press(int keycode, t_data *data)
 
 static int	is_valid_move(double new_x, double new_y, t_data *data)
 {
-	int	map_x;
-	int	map_y;
+	double hitbox_size = 0.2;
 
-	if (new_x < 0 || new_x >= data->map->width || new_y < 0
-		|| new_y >= data->map->height)
+	if (data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x + hitbox_size)] == 1 ||
+		data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x + hitbox_size)] == 1 ||
+		data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x - hitbox_size)] == 1 ||
+		data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x - hitbox_size)] == 1)
 		return (0);
-	map_x = (int)new_x;
-	map_y = (int)new_y;
-	if (data->map->map_int[map_y][map_x] == 1 ||
-		data->map->map_int[(int)(new_y + 0.1)][map_x] == 1 ||
-		data->map->map_int[map_y][(int)(new_x + 0.1)] == 1)
+	if (data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x + hitbox_size)] == 4 ||
+		data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x + hitbox_size)] == 4 ||
+		data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x - hitbox_size)] == 4 ||
+		data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x - hitbox_size)] == 4)
 		return (0);
-	else if ((data->map->map_int[map_y][map_x] == 4 ||
-		data->map->map_int[(int)(new_y + 0.1)][map_x] == 4 ||
-		data->map->map_int[map_y][(int)(new_x + 0.1)] == 4) && data->doors->is_open == 0)
-		return (0);
+
 	return (1);
 }
 
@@ -93,9 +90,11 @@ int	ft_move(t_data *data)
 	double	new_y;
 
 	get_new_position(data, &new_x, &new_y);
-	if (is_valid_move(new_x, data->player->pos_y, data))
+	if (is_valid_move(new_x, new_y, data))
+	{
 		data->player->pos_x = new_x;
-	if (is_valid_move(data->player->pos_x, new_y, data))
 		data->player->pos_y = new_y;
+	}
 	return (0);
 }
+

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 22:10:59 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/22 20:16:28 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/03/24 23:39:10 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,6 @@ static void	set_texture(t_data *data)
 {
 	if (data->map->map_int[data->raycast->map_y][data->raycast->map_x] == 4)
 		data->raycast->texture = DOOR;
-	else if (data->map->map_int[data->raycast->map_y][data->raycast->map_x] == 5)
-	{
-		int i;
-
-		i = 0;
-		while (i < data->doors->nb)
-		{
-			if (data->doors[i].is_open == 1 && data->doors[i].anim_frame <= 4 && !data->doors[i].has_been_open)
-			{
-				data->raycast->texture = DOOR + data->doors[i].anim_frame;
-				break;
-			}
-			i++;
-		}
-	}
 	else
 	{
 		if (data->raycast->side == 0)
@@ -51,8 +36,8 @@ static void	set_texture(t_data *data)
 				data->raycast->texture = EA_TEXTURE;
 			else
 				data->raycast->texture = WE_TEXTURE;
-		}	
-	}	
+		}
+	}
 	if (data->raycast->side == 0)
 		data->raycast->wall_x = data->player->pos_y + data->raycast->wall_dist
 			* data->raycast->ray_y;
@@ -62,32 +47,13 @@ static void	set_texture(t_data *data)
 	data->raycast->wall_x -= floor(data->raycast->wall_x);
 }
 
-static void	put_shade(t_data *data, int i, int y)
-{
-	double	shade;
-	unsigned int		color;
-	double	r;
-	double	g;
-	double	b;
-
-	shade = 1.0 / (1.0 + data->raycast->wall_dist * 0.2);
-	color = get_pixel(*data->mlx->img[data->raycast->texture],
-			data->raycast->tex_x, data->raycast->tex_y);
-	if (color != 0xFF000000)
-	{
-		r = ((color >> 16) & 0xFF) * shade;
-		g = ((color >> 8) & 0xFF) * shade;
-		b = (color & 0xFF) * shade;
-		color = rgb_to_int(r, g, b);
-		put_pixel(data->mlx->img[BACKGROUND], i, y, color);
-	}
-}
-
 void	put_texture(t_data *data, int i)
 {
 	int		y;
 	double	step;
+	int color;
 
+	color = 0;
 	set_texture(data);
 	y = data->raycast->draw_start;
 	data->raycast->tex_x = (int)(data->raycast->wall_x * (double)PIXEL);
@@ -101,7 +67,30 @@ void	put_texture(t_data *data, int i)
 	{
 		data->raycast->tex_y = (int)data->raycast->tex_p % PIXEL;
 		data->raycast->tex_p += step;
-		put_shade(data, i, y);
+		color = get_pixel(*data->mlx->img[data->raycast->texture],
+			data->raycast->tex_x, data->raycast->tex_y);
+		put_pixel(data->mlx->img[BACKGROUND], i, y, color);
 		y++;
 	}
 }
+
+// static void	put_shade(t_data *data, int i, int y)
+// {
+// 	double	shade;
+// 	unsigned int		color;
+// 	double	r;
+// 	double	g;
+// 	double	b;
+
+// 	shade = 1.0 / (1.0 + data->raycast->wall_dist * 0.2);
+// 	color = get_pixel(*data->mlx->img[data->raycast->texture],
+// 			data->raycast->tex_x, data->raycast->tex_y);
+// 	if (color != 0xFF000000)
+// 	{
+// 		r = ((color >> 16) & 0xFF) * shade;
+// 		g = ((color >> 8) & 0xFF) * shade;
+// 		b = (color & 0xFF) * shade;
+// 		color = rgb_to_int(r, g, b);
+// 		put_pixel(data->mlx->img[BACKGROUND], i, y, color);
+// 	}
+// }

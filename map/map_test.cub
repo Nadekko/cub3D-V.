@@ -1,7 +1,7 @@
-NO ./textures/wall_01.xpm
-SO ./textures/wall_02.xpm
-WE ./textures/3_48.xpm
-EA ./textures/4_48.xpm
+NO ./textures/purpletile.xpm
+SO ./textures/lightwood.xpm
+WE ./textures/purplebrick.xpm
+EA ./textures/lightstone.xpm
 
 F 87,33,98
 C 104,63,199

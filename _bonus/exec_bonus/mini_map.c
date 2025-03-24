@@ -79,6 +79,10 @@ void	fill_mini_map(t_data *data)
 					|| ft_strchr("NSWE", data->map->map_tab[map_y][map_x]))
 					draw_on_mini_map(data->mlx->img[MINI_MAP], x, y,
 						TILE_SIZE, 0xabb2b9);
+				else if (data->map->map_int[map_y][map_x] == 4
+					|| ft_strchr("NSWE", data->map->map_tab[map_y][map_x]))
+					draw_on_mini_map(data->mlx->img[MINI_MAP], x, y,
+						TILE_SIZE, 0xaf70d1);
 			}
 		}
 	}

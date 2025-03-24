@@ -1,14 +1,10 @@
 NO ./textures/purpletile.xpm
 SO ./textures/lightwood.xpm
-WE 		 ./textures/purplebrick.xpm
-EA 		./textures/lightstone.xpm
+WE ./textures/purplebrick.xpm
+EA ./textures/lightstone.xpm
 
-F 		 	 		  87,33,98
+F 87,33,98
 C 104,63,199
-
-SO ./textures/lightwood.xpm
-
-
 
 1111111111111111111111111
 1000000000110000000000001
