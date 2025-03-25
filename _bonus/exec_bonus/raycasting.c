@@ -6,7 +6,7 @@
 /*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:38:31 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/24 23:39:15 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/25 04:56:53 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,12 @@ void	compute_door_dist(t_data *data)
 
 void draw_sprites(t_data *data, t_doors *door)
 {
+	int y;
+	int x;
     // Position relative au joueur
     double rel_x = door->x + 0.5 - data->player->pos_x; // Décalage pour centrer
     double rel_y = door->y + 0.5 - data->player->pos_y;
 
-    // Transformation en coordonnées caméra
     double inv_det = 1.0 / (data->raycast->plane_x * data->raycast->dir_y - data->raycast->dir_x * data->raycast->plane_y);
     double transform_x = inv_det * (data->raycast->dir_y * rel_x - data->raycast->dir_x * rel_y);
     double transform_y = inv_det * (-data->raycast->plane_y * rel_x + data->raycast->plane_x * rel_y);
@@ -87,15 +88,20 @@ void draw_sprites(t_data *data, t_doors *door)
     int start_y = HEIGHT / 2 - door_height / 2;
     if (start_y < 0) start_y = 0;
     int end_y = start_y + door_height;
-    if (end_y >= HEIGHT) end_y = HEIGHT - 1;
+    if (end_y >= HEIGHT)
+		end_y = HEIGHT;
 
     int start_x = sprite_screen_x - door_width / 2;
-    if (start_x < 0) start_x = 0;
+    if (start_x < 0)
+		start_x = 0;
     int end_x = start_x + door_width;
-    if (end_x >= WIDTH) end_x = WIDTH - 1;
-    for (int y = start_y; y < end_y; y++)
+    if (end_x >= WIDTH)
+		end_x = WIDTH ;
+	y = start_y;
+    while (y < end_y)
     {
-        for (int x = start_x; x < end_x; x++)
+		x = start_x;
+        while (x < end_x)
         {
             int tex_x = (x - start_x) * PIXEL / door_width;
             int tex_y = (y - start_y) * PIXEL / door_height;
@@ -108,7 +114,9 @@ void draw_sprites(t_data *data, t_doors *door)
 
             if (color != 0xFF000000) // Évite d'afficher les pixels transparents
                 put_pixel(data->mlx->img[BACKGROUND], x, y, color);
+			x++;
         }
+		y++;
     }
 }
 
