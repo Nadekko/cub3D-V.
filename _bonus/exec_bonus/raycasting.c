@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:38:31 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/25 04:56:53 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/25 11:31:10 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,9 @@ void draw_sprites(t_data *data, t_doors *door)
 
             unsigned int color;
             if (door->is_open == 1)
-                color = get_pixel(*data->mlx->img[DOOR + 3], tex_x, tex_y);
+                color = get_pixel(*data->mlx->img[DOOR + 4], tex_x, tex_y);
             else
                 color = get_pixel(*data->mlx->img[DOOR], tex_x, tex_y);
-
             if (color != 0xFF000000) // Évite d'afficher les pixels transparents
                 put_pixel(data->mlx->img[BACKGROUND], x, y, color);
 			x++;
@@ -132,15 +131,15 @@ int ft_should_open_doors(int y, int x, t_data *data)
 	(void)dist;
 	nb_doors = data->doors->nb;
 	i = 0;
-	dist_x = 0;
-	dist_y = 0;
-	dist = 0;
+	// dist_x = 0;
+	// dist_y = 0;
+	// dist = 0;
 	while (i < nb_doors)
 	{
 		dist_x = x - data->player->pos_x;
 		dist_y = y - data->player->pos_y;
 		dist = sqrt(dist_x * dist_x + dist_y * dist_y);
-		if ((dist_x * data->raycast->dir_x + dist_y * data->raycast->dir_y > 0))
+		if (dist <= 2.5 && ((dist_x * data->raycast->dir_x + dist_y * data->raycast->dir_y) > 0))
 			return (1);
 		i++;
 	}

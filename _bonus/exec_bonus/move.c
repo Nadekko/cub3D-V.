@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:04:59 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/12 16:28:46 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:46:13 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	key_press(int keycode, t_data *data)
 
 static int	is_valid_move(double new_x, double new_y, t_data *data)
 {
-	double hitbox_size = 0.2;
+	double hitbox_size = 0.1;
 
 	if (data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x + hitbox_size)] == 1 ||
 		data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x + hitbox_size)] == 1 ||
@@ -57,6 +57,27 @@ static int	is_valid_move(double new_x, double new_y, t_data *data)
 
 	return (1);
 }
+
+// static int	is_valid_move(double new_x, double new_y, t_data *data)
+// {
+// 	int	map_x;
+// 	int	map_y;
+
+// 	if (new_x < 0 || new_x >= data->map->width || new_y < 0
+// 		|| new_y >= data->map->height)
+// 		return (0);
+// 	map_x = (int)new_x;
+// 	map_y = (int)new_y;
+// 	if (data->map->map_int[map_y][map_x] == 1 ||
+// 		data->map->map_int[(int)(new_y + 0.1)][map_x] == 1 ||
+// 		data->map->map_int[map_y][(int)(new_x + 0.1)] == 1)
+// 		return (0);
+// 	else if ((data->map->map_int[map_y][map_x] == 4 ||
+// 		data->map->map_int[(int)(new_y + 0.1)][map_x] == 4 ||
+// 		data->map->map_int[map_y][(int)(new_x + 0.1)] == 4) && data->doors->is_open == 0)
+// 		return (0);
+// 	return (1);
+// }
 
 static void	get_new_position(t_data *data, double *new_x, double *new_y)
 {

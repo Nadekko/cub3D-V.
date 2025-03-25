@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprites.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:41:48 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/24 22:19:50 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/25 10:48:48 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,30 @@ int animation_paws(t_data *data)
 	usleep(10000);
 	return (0);
 }
+int	animation_doors(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (i < data->doors->nb)
+	{
+		if (data->doors[i].is_open && data->doors[i].anim_frame > 4 && !data->doors[i].has_been_open)
+		{
+			data->doors[i].is_open = 0;
+			data->doors[i].anim_frame = 0;
+			data->doors[i].has_been_open = 1;
+			// data->map->map_int[(int)data->doors[i].y][(int)data->doors[i].x] = 6;
+			return (0);
+		}
+		else if (data->doors[i].is_open && data->doors[i].anim_frame <= 4 && !data->doors[i].has_been_open)
+		{
+			data->doors[i].anim_frame++;
+			usleep(10000);
+		}
+		i++;
+	}
+	return (0);
+}
 
 int	is_near_player(t_data *data)
 {
@@ -49,7 +73,7 @@ int	is_near_player(t_data *data)
 		dist_x = data->doors[i].x - data->player->pos_x;
 		dist_y = data->doors[i].y - data->player->pos_y;
 		dist = sqrt(dist_x * dist_x + dist_y * dist_y);
-		if (dist <= 2.5 && (dist_x * data->raycast->dir_x + dist_y * data->raycast->dir_y > 0))
+		if (dist <= 2.5 && (dist_x * data->raycast->dir_x + dist_y * data->raycast->dir_y > 0) && !data->doors[i].has_been_open)
 		{
 			printf("Door %d is open\n", i);
 			data->doors[i].is_open = 1;

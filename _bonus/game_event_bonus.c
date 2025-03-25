@@ -6,7 +6,7 @@
 /*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:33:13 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/22 20:18:36 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/03/25 10:47:42 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	ft_play(t_data *data)
 {
+	animation_doors(data);
 	load_background(data);
 	ft_raycasting(data);
 	load_mini_map(data);

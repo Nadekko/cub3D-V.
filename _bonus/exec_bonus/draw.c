@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 22:10:59 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/24 23:39:10 by andjenna         ###   ########.fr       */
+/*   Updated: 2025/03/25 10:38:13 by ede-cola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	put_texture(t_data *data, int i)
 	double	step;
 	int color;
 
-	color = 0;
+	// color = 0;
 	set_texture(data);
 	y = data->raycast->draw_start;
 	data->raycast->tex_x = (int)(data->raycast->wall_x * (double)PIXEL);
