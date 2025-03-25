@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-cola <ede-cola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andjenna <andjenna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:04:59 by andjenna          #+#    #+#             */
-/*   Updated: 2025/03/25 14:46:13 by ede-cola         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:11:59 by andjenna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,42 +42,38 @@ int	key_press(int keycode, t_data *data)
 
 static int	is_valid_move(double new_x, double new_y, t_data *data)
 {
-	double hitbox_size = 0.1;
+	double hitbox_size;
+	int collision;
+	int collision_x;
+	int collision_y;
+	
+	hitbox_size = 0.1;
 
-	if (data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x + hitbox_size)] == 1 ||
-		data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x + hitbox_size)] == 1 ||
-		data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x - hitbox_size)] == 1 ||
-		data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x - hitbox_size)] == 1)
-		return (0);
-	if (data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x + hitbox_size)] == 4 ||
-		data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x + hitbox_size)] == 4 ||
-		data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x - hitbox_size)] == 4 ||
-		data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x - hitbox_size)] == 4)
-		return (0);
+	collision = (data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x + hitbox_size)] == 1 ||
+					data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x - hitbox_size)] == 1 ||
+					data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x + hitbox_size)] == 4 ||
+					data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x - hitbox_size)] == 4);
 
+	collision_x = (data->map->map_int[(int)(new_y)][(int)(new_x + hitbox_size)] == 1 ||
+					   data->map->map_int[(int)(new_y)][(int)(new_x - hitbox_size)] == 1 ||
+					   data->map->map_int[(int)(new_y)][(int)(new_x + hitbox_size)] == 4 ||
+					   data->map->map_int[(int)(new_y)][(int)(new_x - hitbox_size)] == 4);
+	collision_y = (data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x)] == 1 ||
+					   data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x)] == 1 ||
+					   data->map->map_int[(int)(new_y + hitbox_size)][(int)(new_x)] == 1 ||
+					   data->map->map_int[(int)(new_y - hitbox_size)][(int)(new_x)] == 1);
+	if (collision)
+	{
+		if (!collision_x && (data->map->map_int[(int)(new_y)][(int)(new_x)] != 1 ||
+				data->map->map_int[(int)(new_y)][(int)(new_x)] != 4))
+			return (2);
+		if (!collision_y && (data->map->map_int[(int)(new_y)][(int)(new_x)] != 1 ||
+				data->map->map_int[(int)(new_y)][(int)(new_x)] != 4))
+			return (3);
+		return (0);
+	}
 	return (1);
 }
-
-// static int	is_valid_move(double new_x, double new_y, t_data *data)
-// {
-// 	int	map_x;
-// 	int	map_y;
-
-// 	if (new_x < 0 || new_x >= data->map->width || new_y < 0
-// 		|| new_y >= data->map->height)
-// 		return (0);
-// 	map_x = (int)new_x;
-// 	map_y = (int)new_y;
-// 	if (data->map->map_int[map_y][map_x] == 1 ||
-// 		data->map->map_int[(int)(new_y + 0.1)][map_x] == 1 ||
-// 		data->map->map_int[map_y][(int)(new_x + 0.1)] == 1)
-// 		return (0);
-// 	else if ((data->map->map_int[map_y][map_x] == 4 ||
-// 		data->map->map_int[(int)(new_y + 0.1)][map_x] == 4 ||
-// 		data->map->map_int[map_y][(int)(new_x + 0.1)] == 4) && data->doors->is_open == 0)
-// 		return (0);
-// 	return (1);
-// }
 
 static void	get_new_position(t_data *data, double *new_x, double *new_y)
 {
@@ -111,11 +107,17 @@ int	ft_move(t_data *data)
 	double	new_y;
 
 	get_new_position(data, &new_x, &new_y);
-	if (is_valid_move(new_x, new_y, data))
+	int move_status = is_valid_move(new_x, new_y, data);
+	if (move_status == 1)
 	{
 		data->player->pos_x = new_x;
 		data->player->pos_y = new_y;
 	}
+	else if (move_status == 2)
+		data->player->pos_x = new_x;
+	else if (move_status == 3)
+		data->player->pos_y = new_y;
+	
 	return (0);
 }
 
